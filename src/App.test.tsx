@@ -2,25 +2,46 @@ import { describe, it, expect } from 'vitest'
 import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import App from './App'
+import { products } from './data/products'
+import { portfolio } from './data/portfolio'
 
 describe('App', () => {
-  it('renders the FamzTech hero heading', () => {
+  it('renders the AI & software development hero', () => {
     render(<App />)
     expect(
-      screen.getByRole('heading', {
-        name: /software that moves your business forward/i,
-      }),
+      screen.getByRole('heading', { name: /intelligent software/i }),
     ).toBeInTheDocument()
   })
 
-  it('lists the services offered', () => {
+  it('renders Products and Portfolio as separate sections', () => {
     render(<App />)
-    expect(screen.getByText('Web Platforms')).toBeInTheDocument()
-    expect(screen.getByText('Cloud & DevOps')).toBeInTheDocument()
-    expect(screen.getByText('Product Design')).toBeInTheDocument()
+    expect(
+      screen.getByRole('heading', { name: /our products/i }),
+    ).toBeInTheDocument()
+    expect(
+      screen.getByRole('heading', { name: /^portfolio$/i }),
+    ).toBeInTheDocument()
   })
 
-  it('shows a confirmation after subscribing with a valid email', async () => {
+  it('renders every product from the data file', () => {
+    render(<App />)
+    for (const product of products) {
+      expect(
+        screen.getByRole('heading', { name: product.name }),
+      ).toBeInTheDocument()
+    }
+  })
+
+  it('renders every portfolio project from the data file', () => {
+    render(<App />)
+    for (const item of portfolio) {
+      expect(
+        screen.getByRole('heading', { name: item.title }),
+      ).toBeInTheDocument()
+    }
+  })
+
+  it('confirms a valid newsletter subscription', async () => {
     const user = userEvent.setup()
     render(<App />)
 
@@ -39,8 +60,6 @@ describe('App', () => {
     await user.type(screen.getByLabelText(/email address/i), 'not-an-email')
     await user.click(screen.getByRole('button', { name: /subscribe/i }))
 
-    expect(screen.getByRole('alert')).toHaveTextContent(
-      /valid email address/i,
-    )
+    expect(screen.getByRole('alert')).toHaveTextContent(/valid email address/i)
   })
 })
