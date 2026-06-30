@@ -1,10 +1,25 @@
 :root {
-  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
+  --bg: #f5f2ea;
+  --surface: #ffffff;
+  --ink: #1c1b19;
+  --muted: #63605a;
+  --border: #e4ded1;
+  --primary: #e0532f;
+  --primary-700: #c2431f;
+  --teal: #0f7d6b;
+  --amber: #c98a12;
+  --blue: #2563a8;
+
+  font-family: 'Inter', system-ui, 'Segoe UI', Roboto, Helvetica, Arial,
+    sans-serif;
+  --serif: 'Iowan Old Style', 'Palatino Linotype', Palatino, Georgia, 'Times New Roman',
+    serif;
+
+  line-height: 1.6;
   font-weight: 400;
-  color-scheme: dark;
-  color: rgba(255, 255, 255, 0.88);
-  background-color: #0d0e14;
+  color-scheme: light;
+  color: var(--ink);
+  background-color: var(--bg);
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -15,14 +30,17 @@ body {
   margin: 0;
   min-height: 100vh;
   background:
-    radial-gradient(1200px 600px at 50% -10%, rgba(124, 92, 255, 0.18), transparent 60%),
-    #0d0e14;
+    radial-gradient(900px 500px at 100% -5%, rgba(224, 83, 47, 0.08), transparent 60%),
+    radial-gradient(700px 400px at -10% 10%, rgba(15, 125, 107, 0.07), transparent 55%),
+    var(--bg);
 }
 
 h1,
 h2,
 h3 {
-  color: #fff;
+  font-family: var(--serif);
+  color: var(--ink);
+  font-weight: 600;
   letter-spacing: -0.01em;
 }
 
