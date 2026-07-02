@@ -1,4 +1,5 @@
 import { portfolio } from '../data/portfolio'
+import TiltCard from './TiltCard'
 
 function Portfolio() {
   return (
@@ -9,7 +10,7 @@ function Portfolio() {
       </div>
       <ul className="grid">
         {portfolio.map((item) => (
-          <li key={item.title} className="card portfolio-card">
+          <TiltCard key={item.title} className="portfolio-card">
             <div className="portfolio-top">
               <span className="portfolio-client">{item.client}</span>
               <span className="portfolio-year">{item.year}</span>
@@ -23,7 +24,7 @@ function Portfolio() {
                 </li>
               ))}
             </ul>
-          </li>
+          </TiltCard>
         ))}
       </ul>
     </section>

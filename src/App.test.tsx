@@ -1,6 +1,13 @@
-import { describe, it, expect } from 'vitest'
+import { describe, it, expect, vi } from 'vitest'
 import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
+
+// The 3D hero relies on WebGL, which jsdom does not implement. Stub it so the
+// rest of the UI can be tested in the DOM environment.
+vi.mock('./components/HeroCanvas', () => ({
+  default: () => null,
+}))
+
 import App from './App'
 import { products } from './data/products'
 import { portfolio } from './data/portfolio'

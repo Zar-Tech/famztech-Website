@@ -13,8 +13,8 @@
   align-items: center;
   justify-content: space-between;
   padding: 1.1rem 0;
-  background: rgba(245, 242, 234, 0.8);
-  backdrop-filter: blur(10px);
+  background: rgba(11, 13, 18, 0.72);
+  backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--border);
 }
 
@@ -75,11 +75,55 @@
   color: var(--bg);
 }
 
-/* Hero — left aligned, editorial */
+/* Hero — left aligned, editorial, with 3D canvas */
 .hero {
+  position: relative;
   text-align: left;
-  padding: 5rem 0 3.5rem;
-  max-width: 46rem;
+  padding: 5.5rem 0 4rem;
+  min-height: 78vh;
+  display: flex;
+  align-items: center;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 40rem;
+}
+
+.hero-canvas {
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  right: -6%;
+  transform: translateY(-50%);
+  width: min(58%, 640px);
+  aspect-ratio: 1 / 1;
+  pointer-events: none;
+}
+
+.hero-canvas canvas {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.hero-canvas-fallback {
+  position: absolute;
+  inset: 12%;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, var(--primary), transparent 62%),
+    radial-gradient(circle at 70% 70%, var(--teal), transparent 60%);
+  filter: blur(26px);
+  opacity: 0.75;
+  animation: float-a 12s ease-in-out infinite;
+}
+
+@media (max-width: 780px) {
+  .hero-canvas {
+    right: -25%;
+    width: 90%;
+    opacity: 0.4;
+  }
 }
 
 .eyebrow {
@@ -158,7 +202,7 @@
   border-radius: 8px;
   padding: 1.6rem;
   text-align: left;
-  box-shadow: 0 1px 2px rgba(28, 27, 25, 0.04);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
   transition: box-shadow 0.18s ease, transform 0.18s ease;
 }
 
@@ -176,8 +220,8 @@
 }
 
 .card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 18px 38px rgba(28, 27, 25, 0.14);
+  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.55);
+  border-color: rgba(255, 106, 69, 0.4);
 }
 
 .card:hover::before {
@@ -259,7 +303,7 @@
   font-size: 0.76rem;
   padding: 0.26rem 0.6rem;
   border-radius: 4px;
-  background: #f0ece2;
+  background: rgba(255, 255, 255, 0.06);
   color: var(--muted);
   font-weight: 600;
 }
@@ -424,44 +468,72 @@
   transform: none;
 }
 
-/* Staggered entrance for grid cards */
-[data-reveal] .grid > li {
+/* Staggered entrance for grid cards (animates the inner wrapper so the
+   outer card is free to own the 3D tilt transform) */
+[data-reveal] .grid > li .tilt-inner {
   opacity: 0;
-  transform: translateY(36px) scale(0.97);
+  transform: translateY(38px) scale(0.96);
 }
 
-[data-reveal].is-visible .grid > li {
-  animation: fade-up 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+[data-reveal].is-visible .grid > li .tilt-inner {
+  animation: fade-up 0.65s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
-.grid > li:nth-child(1) {
+.grid > li:nth-child(1) .tilt-inner {
   animation-delay: 0.05s;
 }
-.grid > li:nth-child(2) {
+.grid > li:nth-child(2) .tilt-inner {
   animation-delay: 0.14s;
 }
-.grid > li:nth-child(3) {
+.grid > li:nth-child(3) .tilt-inner {
   animation-delay: 0.23s;
 }
-.grid > li:nth-child(4) {
+.grid > li:nth-child(4) .tilt-inner {
   animation-delay: 0.32s;
 }
-.grid > li:nth-child(5) {
+.grid > li:nth-child(5) .tilt-inner {
   animation-delay: 0.41s;
 }
-.grid > li:nth-child(6) {
+.grid > li:nth-child(6) .tilt-inner {
   animation-delay: 0.5s;
 }
 
 @keyframes fade-up {
   from {
     opacity: 0;
-    transform: translateY(36px) scale(0.97);
+    transform: translateY(38px) scale(0.96);
   }
   to {
     opacity: 1;
     transform: translateY(0) scale(1);
   }
+}
+
+/* Interactive 3D tilt cards */
+.tilt {
+  transform: perspective(900px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+  transform-style: preserve-3d;
+  transition: transform 0.12s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  will-change: transform;
+}
+
+.tilt::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(
+    340px circle at var(--mx, 50%) var(--my, 50%),
+    rgba(255, 106, 69, 0.16),
+    transparent 46%
+  );
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  pointer-events: none;
+}
+
+.tilt:hover::after {
+  opacity: 1;
 }
 
 /* Hero staggered entrance */
@@ -586,8 +658,8 @@
 @media (prefers-reduced-motion: reduce) {
   [data-reveal],
   [data-reveal].is-visible,
-  [data-reveal] .grid > li,
-  [data-reveal].is-visible .grid > li,
+  [data-reveal] .grid > li .tilt-inner,
+  [data-reveal].is-visible .grid > li .tilt-inner,
   .hero.is-visible .eyebrow,
   .hero.is-visible h1,
   .hero.is-visible p,
@@ -597,11 +669,13 @@
     animation: none;
   }
 
-  .orb {
-    animation: none;
+  .tilt {
+    transform: none !important;
   }
 
-  .accent {
+  .orb,
+  .accent,
+  .hero-canvas-fallback {
     animation: none;
   }
 }

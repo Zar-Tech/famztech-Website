@@ -1,5 +1,6 @@
 import { useMemo, useState } from 'react'
 import { products } from '../data/products'
+import TiltCard from './TiltCard'
 
 function statusClass(status: string) {
   return 'badge badge-' + status.toLowerCase().replace(/\s+/g, '-')
@@ -44,7 +45,7 @@ function Products() {
 
       <ul className="grid">
         {visible.map((product) => (
-          <li key={active + product.name} className="card product-card">
+          <TiltCard key={active + product.name} className="product-card">
             <div className="product-top">
               <span className="card-icon" aria-hidden="true">
                 {product.icon}
@@ -69,7 +70,7 @@ function Products() {
                 </a>
               )}
             </div>
-          </li>
+          </TiltCard>
         ))}
       </ul>
     </section>
