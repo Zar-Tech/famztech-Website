@@ -5,7 +5,7 @@ type Props = {
   children: ReactNode
 }
 
-const MAX_TILT = 12
+const MAX_TILT = 8
 
 /** A card that tilts in 3D toward the pointer for an interactive feel. */
 function TiltCard({ className = '', children }: Props) {

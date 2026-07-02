@@ -1,6 +1,7 @@
 import './App.css'
 import { useScrollReveal } from './hooks/useScrollReveal'
 import { useTheme } from './hooks/useTheme'
+import ScrollProgress from './components/ScrollProgress'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import Services from './components/Services'
@@ -15,6 +16,7 @@ function App() {
 
   return (
     <div className="page">
+      <ScrollProgress />
       <div className="bg-orbs" aria-hidden="true">
         <span className="orb orb-1" />
         <span className="orb orb-2" />

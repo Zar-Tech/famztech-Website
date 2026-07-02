@@ -535,13 +535,16 @@
 /* Scroll reveal for sections */
 [data-reveal] {
   opacity: 0;
-  transform: translateY(44px);
-  transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+  transform: translateY(46px);
+  filter: blur(10px);
+  transition: opacity 0.9s ease, transform 1s cubic-bezier(0.16, 1, 0.3, 1),
+    filter 0.9s ease;
 }
 
 [data-reveal].is-visible {
   opacity: 1;
   transform: none;
+  filter: blur(0);
 }
 
 /* Staggered entrance for grid cards (animates the inner wrapper so the
@@ -578,10 +581,12 @@
   from {
     opacity: 0;
     transform: translateY(38px) scale(0.96);
+    filter: blur(7px);
   }
   to {
     opacity: 1;
     transform: translateY(0) scale(1);
+    filter: blur(0);
   }
 }
 
@@ -589,7 +594,8 @@
 .tilt {
   transform: perspective(900px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
   transform-style: preserve-3d;
-  transition: transform 0.12s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.25s ease, border-color 0.25s ease;
   will-change: transform;
 }
 
@@ -730,6 +736,59 @@
   transform: scale(0.95);
 }
 
+/* Primary button arrow */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.btn-primary::after {
+  content: '→';
+  display: inline-block;
+  transition: transform 0.25s ease;
+}
+
+.btn-primary:hover::after {
+  transform: translateX(5px);
+}
+
+.product-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+/* Nav entrance */
+.nav {
+  animation: nav-drop 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes nav-drop {
+  from {
+    opacity: 0;
+    transform: translateY(-16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Scroll progress bar */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  width: 100%;
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+  background: linear-gradient(90deg, var(--primary), var(--teal));
+  z-index: 100;
+  will-change: transform;
+}
+
 /* Respect reduced motion */
 @media (prefers-reduced-motion: reduce) {
   [data-reveal],
@@ -742,6 +801,7 @@
   .hero.is-visible .hero-actions {
     opacity: 1;
     transform: none;
+    filter: none;
     animation: none;
   }
 
@@ -749,6 +809,7 @@
     transform: none !important;
   }
 
+  .nav,
   .orb,
   .accent,
   .hero-canvas-fallback {
