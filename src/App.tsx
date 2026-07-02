@@ -1,5 +1,6 @@
 import './App.css'
 import { useScrollReveal } from './hooks/useScrollReveal'
+import { useTheme } from './hooks/useTheme'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import Services from './components/Services'
@@ -10,6 +11,7 @@ import Footer from './components/Footer'
 
 function App() {
   useScrollReveal()
+  const { themeId, setTheme, theme } = useTheme()
 
   return (
     <div className="page">
@@ -17,9 +19,9 @@ function App() {
         <span className="orb orb-1" />
         <span className="orb orb-2" />
       </div>
-      <Navbar />
+      <Navbar themeId={themeId} onThemeChange={setTheme} />
       <main>
-        <Hero />
+        <Hero scene={theme.scene} />
         <Services />
         <Products />
         <Portfolio />

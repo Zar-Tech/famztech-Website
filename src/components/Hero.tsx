@@ -1,9 +1,14 @@
 import HeroCanvas from './HeroCanvas'
+import type { Theme } from '../themes'
 
-function Hero() {
+type Props = {
+  scene: Theme['scene']
+}
+
+function Hero({ scene }: Props) {
   return (
     <section className="hero" id="top" data-reveal>
-      <HeroCanvas />
+      <HeroCanvas scene={scene} />
       <div className="hero-content">
         <span className="eyebrow">AI &amp; Software Development</span>
         <h1>

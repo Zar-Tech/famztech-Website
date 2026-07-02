@@ -81,6 +81,17 @@ describe('App', () => {
     )
   })
 
+  it('switches the active theme when a theme option is chosen', async () => {
+    const user = userEvent.setup()
+    render(<App />)
+
+    await user.click(screen.getByRole('button', { name: /midnight/i }))
+    expect(document.documentElement.dataset.theme).toBe('midnight')
+
+    await user.click(screen.getByRole('button', { name: /azure/i }))
+    expect(document.documentElement.dataset.theme).toBe('azure')
+  })
+
   it('rejects an invalid email address', async () => {
     const user = userEvent.setup()
     render(<App />)

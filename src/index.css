@@ -1,8 +1,48 @@
 :root {
+  font-family: 'Inter', system-ui, 'Segoe UI', Roboto, Helvetica, Arial,
+    sans-serif;
+  --serif: 'Iowan Old Style', 'Palatino Linotype', Palatino, Georgia,
+    'Times New Roman', serif;
+
+  line-height: 1.6;
+  font-weight: 400;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ---- Theme: Daylight (light, warm) ---- */
+[data-theme='daylight'] {
+  color-scheme: light;
+  --bg: #f5f2ea;
+  --bg-2: #efe9dd;
+  --surface: #ffffff;
+  --ink: #1c1b19;
+  --muted: #63605a;
+  --border: rgba(20, 18, 15, 0.12);
+  --primary: #e0532f;
+  --primary-700: #c2431f;
+  --teal: #0f7d6b;
+  --amber: #c98a12;
+  --blue: #2563a8;
+  --nav-bg: rgba(245, 242, 234, 0.82);
+  --tag-bg: #efe7d8;
+  --card-shadow: 0 1px 2px rgba(28, 27, 25, 0.06);
+  --card-shadow-hover: 0 22px 44px rgba(28, 27, 25, 0.16);
+  --orb-1: rgba(224, 83, 47, 0.2);
+  --orb-2: rgba(15, 125, 107, 0.18);
+  --glow-1: rgba(224, 83, 47, 0.1);
+  --glow-2: rgba(15, 125, 107, 0.1);
+  --tilt-glow: rgba(224, 83, 47, 0.16);
+}
+
+/* ---- Theme: Midnight (dark, warm) ---- */
+[data-theme='midnight'] {
+  color-scheme: dark;
   --bg: #0b0d12;
   --bg-2: #10131a;
   --surface: #14171f;
-  --surface-2: #1a1e28;
   --ink: #f2efe9;
   --muted: #9aa1ad;
   --border: rgba(255, 255, 255, 0.09);
@@ -11,31 +51,53 @@
   --teal: #2dd4bf;
   --amber: #f0b429;
   --blue: #6aa9e9;
+  --nav-bg: rgba(11, 13, 18, 0.72);
+  --tag-bg: rgba(255, 255, 255, 0.06);
+  --card-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
+  --card-shadow-hover: 0 24px 48px rgba(0, 0, 0, 0.55);
+  --orb-1: rgba(255, 106, 69, 0.18);
+  --orb-2: rgba(45, 212, 191, 0.16);
+  --glow-1: rgba(255, 106, 69, 0.16);
+  --glow-2: rgba(45, 212, 191, 0.14);
+  --tilt-glow: rgba(255, 106, 69, 0.18);
+}
 
-  font-family: 'Inter', system-ui, 'Segoe UI', Roboto, Helvetica, Arial,
-    sans-serif;
-  --serif: 'Iowan Old Style', 'Palatino Linotype', Palatino, Georgia,
-    'Times New Roman', serif;
-
-  line-height: 1.6;
-  font-weight: 400;
-  color-scheme: dark;
-  color: var(--ink);
-  background-color: var(--bg);
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+/* ---- Theme: Azure (light, cool / corporate) ---- */
+[data-theme='azure'] {
+  color-scheme: light;
+  --bg: #f7f9fc;
+  --bg-2: #eef2f8;
+  --surface: #ffffff;
+  --ink: #0f172a;
+  --muted: #5b6b85;
+  --border: rgba(15, 23, 42, 0.1);
+  --primary: #4f46e5;
+  --primary-700: #4338ca;
+  --teal: #0ea5a3;
+  --amber: #d97706;
+  --blue: #2563eb;
+  --nav-bg: rgba(247, 249, 252, 0.85);
+  --tag-bg: #e8edf6;
+  --card-shadow: 0 1px 2px rgba(15, 23, 42, 0.06);
+  --card-shadow-hover: 0 22px 44px rgba(15, 23, 42, 0.16);
+  --orb-1: rgba(79, 70, 229, 0.16);
+  --orb-2: rgba(14, 165, 163, 0.16);
+  --glow-1: rgba(79, 70, 229, 0.1);
+  --glow-2: rgba(14, 165, 163, 0.1);
+  --tilt-glow: rgba(79, 70, 229, 0.16);
 }
 
 body {
   margin: 0;
   min-height: 100vh;
+  color: var(--ink);
+  background-color: var(--bg);
   background:
-    radial-gradient(1000px 560px at 88% -8%, rgba(255, 106, 69, 0.16), transparent 60%),
-    radial-gradient(820px 460px at -8% 6%, rgba(45, 212, 191, 0.14), transparent 58%),
+    radial-gradient(1000px 560px at 88% -8%, var(--glow-1), transparent 60%),
+    radial-gradient(820px 460px at -8% 6%, var(--glow-2), transparent 58%),
     linear-gradient(180deg, var(--bg) 0%, var(--bg-2) 100%);
   background-attachment: fixed;
+  transition: background-color 0.4s ease, color 0.4s ease;
 }
 
 h1,
