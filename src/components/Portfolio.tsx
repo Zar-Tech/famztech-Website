@@ -2,7 +2,7 @@ import { portfolio } from '../data/portfolio'
 
 function Portfolio() {
   return (
-    <section className="section" id="portfolio">
+    <section className="section" id="portfolio" data-reveal>
       <div className="section-head">
         <h2>Portfolio</h2>
         <p>A selection of projects we have delivered for our clients.</p>

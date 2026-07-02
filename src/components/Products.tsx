@@ -1,3 +1,4 @@
+import { useMemo, useState } from 'react'
 import { products } from '../data/products'
 
 function statusClass(status: string) {
@@ -5,15 +6,45 @@ function statusClass(status: string) {
 }
 
 function Products() {
+  const categories = useMemo(
+    () => ['All', ...Array.from(new Set(products.map((p) => p.category)))],
+    [],
+  )
+  const [active, setActive] = useState('All')
+
+  const visible =
+    active === 'All'
+      ? products
+      : products.filter((product) => product.category === active)
+
   return (
-    <section className="section" id="products">
+    <section className="section" id="products" data-reveal>
       <div className="section-head">
         <h2>Our products</h2>
         <p>Apps and platforms built by FamzTech that you can use today.</p>
       </div>
+
+      <div
+        className="filters"
+        role="group"
+        aria-label="Filter products by category"
+      >
+        {categories.map((category) => (
+          <button
+            key={category}
+            type="button"
+            className={'filter-chip' + (active === category ? ' active' : '')}
+            aria-pressed={active === category}
+            onClick={() => setActive(category)}
+          >
+            {category}
+          </button>
+        ))}
+      </div>
+
       <ul className="grid">
-        {products.map((product) => (
-          <li key={product.name} className="card product-card">
+        {visible.map((product) => (
+          <li key={active + product.name} className="card product-card">
             <div className="product-top">
               <span className="card-icon" aria-hidden="true">
                 {product.icon}

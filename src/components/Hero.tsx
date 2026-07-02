@@ -1,6 +1,6 @@
 function Hero() {
   return (
-    <section className="hero" id="top">
+    <section className="hero" id="top" data-reveal>
       <span className="eyebrow">AI &amp; Software Development</span>
       <h1>
         We build <span className="accent">intelligent software</span> for

@@ -21,7 +21,7 @@ function Contact() {
   }
 
   return (
-    <section className="section contact" id="contact">
+    <section className="section contact" id="contact" data-reveal>
       <div className="section-head">
         <h2>Let&apos;s build something</h2>
         <p>Subscribe for product updates or reach out to start a project.</p>

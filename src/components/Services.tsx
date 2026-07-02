@@ -2,7 +2,7 @@ import { services } from '../data/services'
 
 function Services() {
   return (
-    <section className="section" id="services">
+    <section className="section" id="services" data-reveal>
       <div className="section-head">
         <h2>What we do</h2>
         <p>End-to-end AI and software development services.</p>

@@ -41,6 +41,27 @@ describe('App', () => {
     }
   })
 
+  it('filters products by category when a filter chip is clicked', async () => {
+    const user = userEvent.setup()
+    render(<App />)
+
+    expect(
+      screen.getByRole('heading', { name: 'FamzAI Assistant' }),
+    ).toBeInTheDocument()
+    expect(
+      screen.getByRole('heading', { name: 'DeployMate' }),
+    ).toBeInTheDocument()
+
+    await user.click(screen.getByRole('button', { name: 'DevOps' }))
+
+    expect(
+      screen.getByRole('heading', { name: 'DeployMate' }),
+    ).toBeInTheDocument()
+    expect(
+      screen.queryByRole('heading', { name: 'FamzAI Assistant' }),
+    ).not.toBeInTheDocument()
+  })
+
   it('confirms a valid newsletter subscription', async () => {
     const user = userEvent.setup()
     render(<App />)
