@@ -18,6 +18,7 @@ function Navbar({ themeId, onThemeChange }: Props) {
           <a href="#products">Products</a>
           <a href="#portfolio">Portfolio</a>
           <a href="#contact">Contact</a>
+          <a href="/premium.html">Studio ↗</a>
         </nav>
         <ThemeSwitcher themeId={themeId} onChange={onThemeChange} />
       </div>
