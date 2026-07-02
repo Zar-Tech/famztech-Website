@@ -296,6 +296,7 @@
 }
 
 .card:hover {
+  transform: translateY(-6px);
   box-shadow: var(--card-shadow-hover);
   border-color: var(--primary);
 }
@@ -535,87 +536,54 @@
 /* Scroll reveal for sections */
 [data-reveal] {
   opacity: 0;
-  transform: translateY(46px);
-  filter: blur(10px);
-  transition: opacity 0.9s ease, transform 1s cubic-bezier(0.16, 1, 0.3, 1),
-    filter 0.9s ease;
+  transform: translateY(26px);
+  transition: opacity 0.6s ease, transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 [data-reveal].is-visible {
   opacity: 1;
   transform: none;
-  filter: blur(0);
 }
 
 /* Staggered entrance for grid cards (animates the inner wrapper so the
-   outer card is free to own the 3D tilt transform) */
-[data-reveal] .grid > li .tilt-inner {
+   outer card is free to own its hover transform) */
+[data-reveal] .grid > li .card-inner {
   opacity: 0;
-  transform: translateY(38px) scale(0.96);
+  transform: translateY(20px);
 }
 
-[data-reveal].is-visible .grid > li .tilt-inner {
-  animation: fade-up 0.65s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+[data-reveal].is-visible .grid > li .card-inner {
+  animation: fade-up 0.55s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
-.grid > li:nth-child(1) .tilt-inner {
+.grid > li:nth-child(1) .card-inner {
   animation-delay: 0.05s;
 }
-.grid > li:nth-child(2) .tilt-inner {
+.grid > li:nth-child(2) .card-inner {
   animation-delay: 0.14s;
 }
-.grid > li:nth-child(3) .tilt-inner {
+.grid > li:nth-child(3) .card-inner {
   animation-delay: 0.23s;
 }
-.grid > li:nth-child(4) .tilt-inner {
+.grid > li:nth-child(4) .card-inner {
   animation-delay: 0.32s;
 }
-.grid > li:nth-child(5) .tilt-inner {
+.grid > li:nth-child(5) .card-inner {
   animation-delay: 0.41s;
 }
-.grid > li:nth-child(6) .tilt-inner {
+.grid > li:nth-child(6) .card-inner {
   animation-delay: 0.5s;
 }
 
 @keyframes fade-up {
   from {
     opacity: 0;
-    transform: translateY(38px) scale(0.96);
-    filter: blur(7px);
+    transform: translateY(20px);
   }
   to {
     opacity: 1;
-    transform: translateY(0) scale(1);
-    filter: blur(0);
+    transform: translateY(0);
   }
-}
-
-/* Interactive 3D tilt cards */
-.tilt {
-  transform: perspective(900px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
-  transform-style: preserve-3d;
-  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
-    box-shadow 0.25s ease, border-color 0.25s ease;
-  will-change: transform;
-}
-
-.tilt::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  background: radial-gradient(
-    340px circle at var(--mx, 50%) var(--my, 50%),
-    var(--tilt-glow),
-    transparent 46%
-  );
-  opacity: 0;
-  transition: opacity 0.25s ease;
-  pointer-events: none;
-}
-
-.tilt:hover::after {
-  opacity: 1;
 }
 
 /* Hero staggered entrance */
@@ -634,18 +602,10 @@
 
 .accent {
   font-style: italic;
-  background: linear-gradient(100deg, var(--primary) 0%, var(--teal) 50%, var(--primary) 100%);
-  background-size: 200% auto;
+  background: linear-gradient(100deg, var(--primary), var(--teal));
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: shimmer 5s linear infinite;
-}
-
-@keyframes shimmer {
-  to {
-    background-position: 200% center;
-  }
 }
 
 /* Animated nav underline */
@@ -793,8 +753,8 @@
 @media (prefers-reduced-motion: reduce) {
   [data-reveal],
   [data-reveal].is-visible,
-  [data-reveal] .grid > li .tilt-inner,
-  [data-reveal].is-visible .grid > li .tilt-inner,
+  [data-reveal] .grid > li .card-inner,
+  [data-reveal].is-visible .grid > li .card-inner,
   .hero.is-visible .eyebrow,
   .hero.is-visible h1,
   .hero.is-visible p,
@@ -805,13 +765,8 @@
     animation: none;
   }
 
-  .tilt {
-    transform: none !important;
-  }
-
   .nav,
   .orb,
-  .accent,
   .hero-canvas-fallback {
     animation: none;
   }

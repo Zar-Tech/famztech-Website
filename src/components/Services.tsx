@@ -1,5 +1,5 @@
 import { services } from '../data/services'
-import TiltCard from './TiltCard'
+import Card from './Card'
 
 function Services() {
   return (
@@ -10,13 +10,13 @@ function Services() {
       </div>
       <ul className="grid">
         {services.map((service) => (
-          <TiltCard key={service.title}>
+          <Card key={service.title}>
             <span className="card-icon" aria-hidden="true">
               {service.icon}
             </span>
             <h3>{service.title}</h3>
             <p>{service.description}</p>
-          </TiltCard>
+          </Card>
         ))}
       </ul>
     </section>
