@@ -21,7 +21,7 @@ export default function Footer() {
         <div className="footer-brand">
           <a href="#home" className="footer-logo">
             <span className="footer-logo-icon">F</span>
-            <span className="brand-logo text-white">
+            <span className="brand-logo brand-logo-footer">
               Famz<span className="text-accent">tech</span>
             </span>
           </a>

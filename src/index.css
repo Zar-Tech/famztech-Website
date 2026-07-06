@@ -553,6 +553,10 @@ body {
   color: var(--color-black);
 }
 
+.brand-logo-footer {
+  color: #ffffff;
+}
+
 .nav-link {
   font-size: 0.875rem;
   font-weight: 500;
