@@ -11,7 +11,27 @@ Premium technology company website with Sema Software-inspired CSS animations.
 - Gradient background shift on CTA
 - Button hover scale + glow, card lift, link underline
 
-## Sections
+## Products
+
+Edit `src/data/products.ts` to add or update your products. Each product supports:
+
+- `name`, `tag`, `description`, `features`
+- Optional `price` (e.g. `From $49/mo`)
+- `viz`: `code` | `bars` | `grid` (animation style in the card)
+- `ctaLabel` and `ctaHref` for the call-to-action link
+
+```ts
+{
+  id: 'my-product',
+  name: 'Your Product Name',
+  tag: 'Category',
+  description: 'Short description...',
+  features: ['Feature 1', 'Feature 2'],
+  price: 'From $29/mo',
+  viz: 'code',
+}
+```
+
 
 - **Home** — Hero with animated code editor
 - **Impact** — Large stat reveal with particles

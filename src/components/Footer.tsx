@@ -1,4 +1,5 @@
 import { ArrowRight, Mail, MapPin } from 'lucide-react'
+import { products } from '../data/products'
 
 const exploreLinks = [
   { label: 'Home', href: '#home' },
@@ -8,10 +9,8 @@ const exploreLinks = [
 ]
 
 const expertise = [
-  'Mobile & Web Apps',
-  'Cloud Infrastructure',
-  'AI & Security',
-  'Data Analytics',
+  ...products.map((p) => p.name),
+  'App Development',
 ]
 
 export default function Footer() {
