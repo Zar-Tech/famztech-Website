@@ -1,4 +1,5 @@
 import FadeIn from '../components/FadeIn'
+import SectionHeader from '../components/SectionHeader'
 import AnimatedCodeEditor from '../components/AnimatedCodeEditor'
 import AnimatedBars from '../components/AnimatedBars'
 
@@ -6,24 +7,24 @@ const products = [
   {
     name: 'CloudX Platform',
     tag: 'Cloud Infrastructure',
-    desc: 'Real-time monitoring of cloud infrastructure health and performance across your entire organization.',
+    desc: 'Monitor cloud health and performance across your entire organization in real time.',
     features: [
-      'Multi-region deployment with auto-scaling',
-      '99.99% uptime SLA guarantee',
-      'Real-time performance dashboards',
-      'Industry-based infrastructure benchmarks',
+      'Multi-region auto-scaling',
+      '99.99% uptime SLA',
+      'Performance dashboards',
+      'Infrastructure benchmarks',
     ],
     viz: 'code' as const,
   },
   {
     name: 'SecureAI Suite',
     tag: 'AI & Security',
-    desc: 'Comprehensive assessment of AI-generated code with risk heat maps and compliance tracking.',
+    desc: 'Assess AI-generated code risk with heat maps, compliance tracking, and threat detection.',
     features: [
-      'GenAI code risk assessment',
-      'Compliance automation (SOC 2, GDPR)',
-      'Threat detection and zero-trust security',
-      'Developer productivity analytics',
+      'GenAI risk assessment',
+      'SOC 2 & GDPR compliance',
+      'Zero-trust security',
+      'Developer analytics',
     ],
     viz: 'bars' as const,
   },
@@ -31,47 +32,37 @@ const products = [
 
 export default function ProductsSection() {
   return (
-    <section id="products" className="py-28 bg-cream">
-      <div className="max-w-7xl mx-auto px-6">
+    <section id="products" className="section-pad bg-cream">
+      <div className="section-wrap">
         <FadeIn>
-          <p className="section-label mb-3">Our Products</p>
-          <h2 className="heading-lg text-black mb-4">
-            Built for teams that need to <span className="text-accent">move fast</span>
-          </h2>
-          <p className="text-muted max-w-2xl mb-16 leading-relaxed">
-            By partnering with developers and technologists, Famztech delivers platforms
-            that increase productivity while reducing operational and security risk.
-          </p>
+          <SectionHeader
+            label="Our Products"
+            title={<>Built for teams that need to <span className="text-accent">move fast</span></>}
+            description="Platforms that increase productivity while reducing operational and security risk."
+          />
         </FadeIn>
 
-        <div className="grid lg:grid-cols-2 gap-8">
+        <div className="grid lg:grid-cols-2 gap-6">
           {products.map((product, i) => (
-            <FadeIn key={product.name} delay={i * 0.12}>
-              <article className="bg-white rounded-2xl border border-black/8 overflow-hidden card-hover">
-                <div className="product-viz h-[200px]">
+            <FadeIn key={product.name} delay={i * 0.1}>
+              <article className="product-card card-hover">
+                <div className="product-viz h-[180px]">
                   {product.viz === 'code' ? (
                     <AnimatedCodeEditor compact showChart />
                   ) : (
                     <AnimatedBars />
                   )}
                 </div>
-                <div className="p-8">
-                  <span className="text-xs font-semibold text-orange uppercase tracking-wider">
-                    {product.tag}
-                  </span>
-                  <h3 className="font-[family-name:var(--font-display)] text-2xl font-bold text-black mt-2 mb-3">
-                    {product.name}
-                  </h3>
-                  <p className="text-muted text-sm leading-relaxed mb-5">{product.desc}</p>
-                  <ul className="space-y-2 mb-6">
+                <div className="product-card-body">
+                  <p className="caption text-orange">{product.tag}</p>
+                  <h3 className="product-title mt-2 mb-3">{product.name}</h3>
+                  <p className="body text-muted mb-5">{product.desc}</p>
+                  <ul className="feature-list mb-6">
                     {product.features.map((f) => (
-                      <li key={f} className="text-sm text-charcoal flex items-start gap-2">
-                        <span className="text-orange mt-0.5">—</span>
-                        {f}
-                      </li>
+                      <li key={f}>{f}</li>
                     ))}
                   </ul>
-                  <a href="#contact" className="link-underline text-sm font-semibold text-orange">
+                  <a href="#contact" className="link-underline body-sm font-semibold text-orange">
                     Learn more
                   </a>
                 </div>

@@ -26,30 +26,30 @@ export default function Navbar() {
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? 'bg-white/95 backdrop-blur-md border-b border-black/5 shadow-sm py-3' : 'py-5 bg-transparent'
+        scrolled ? 'bg-white/95 backdrop-blur-md border-b border-black/5 py-3' : 'py-5 bg-transparent'
       }`}
     >
-      <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
+      <div className="section-wrap flex items-center justify-between">
         <a
           href="#home"
           onClick={(e) => { e.preventDefault(); handleNavClick('#home') }}
           className="flex items-center gap-2.5"
         >
-          <div className="w-9 h-9 rounded-full bg-orange flex items-center justify-center font-bold text-white text-sm">
+          <div className="w-8 h-8 rounded-full bg-orange flex items-center justify-center font-semibold text-white text-xs">
             F
           </div>
-          <span className="font-[family-name:var(--font-display)] text-xl font-bold text-black">
+          <span className="brand-logo">
             Famz<span className="text-accent">tech</span>
           </span>
         </a>
 
-        <div className="hidden md:flex items-center gap-6">
+        <div className="hidden md:flex items-center gap-8">
           {navLinks.map((link) => (
             <a
               key={link.href}
               href={link.href}
               onClick={(e) => { e.preventDefault(); handleNavClick(link.href) }}
-              className="link-underline text-sm font-medium text-charcoal"
+              className="nav-link link-underline"
             >
               {link.label}
             </a>
@@ -57,7 +57,7 @@ export default function Navbar() {
           <a
             href="#contact"
             onClick={(e) => { e.preventDefault(); handleNavClick('#contact') }}
-            className="btn-primary text-sm !py-2.5 !px-5"
+            className="btn-primary !py-2 !px-4"
           >
             Get Started
           </a>
@@ -68,27 +68,27 @@ export default function Navbar() {
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-label="Toggle menu"
         >
-          {mobileOpen ? <X size={24} /> : <Menu size={24} />}
+          {mobileOpen ? <X size={22} /> : <Menu size={22} />}
         </button>
       </div>
 
       {mobileOpen && (
-        <div className="md:hidden mx-4 mt-2 bg-white rounded-2xl shadow-xl border border-black/5 overflow-hidden">
+        <div className="md:hidden mx-4 mt-2 bg-white rounded-xl border border-black/5 shadow-lg overflow-hidden">
           {navLinks.map((link) => (
             <a
               key={link.href}
               href={link.href}
               onClick={(e) => { e.preventDefault(); handleNavClick(link.href) }}
-              className="block px-6 py-3.5 text-sm font-medium text-charcoal hover:bg-cream transition-colors"
+              className="block px-5 py-3 body font-medium text-charcoal hover:bg-cream transition-colors"
             >
               {link.label}
             </a>
           ))}
-          <div className="px-4 pb-4">
+          <div className="px-4 pb-4 pt-1">
             <a
               href="#contact"
               onClick={(e) => { e.preventDefault(); handleNavClick('#contact') }}
-              className="btn-primary w-full justify-center text-sm"
+              className="btn-primary w-full"
             >
               Get Started
             </a>
