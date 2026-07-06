@@ -5,7 +5,7 @@ const footerLinks = [
   { label: 'Contact', href: '#contact' },
 ]
 
-const services = ['CloudX Platform', 'SecureAI Suite', 'DataFlow Engine', 'Infrastructure Audits']
+const services = ['CloudX Platform', 'SecureAI Suite', 'App Development', 'Infrastructure Audits']
 
 export default function Footer() {
   return (

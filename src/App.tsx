@@ -3,6 +3,7 @@ import Footer from './components/Footer'
 import HomeSection from './sections/HomeSection'
 import ProductsSection from './sections/ProductsSection'
 import ShowcaseSection from './sections/ShowcaseSection'
+import AppDevelopmentSection from './sections/AppDevelopmentSection'
 import AboutSection from './sections/AboutSection'
 import ContactSection from './sections/ContactSection'
 
@@ -14,6 +15,7 @@ export default function App() {
         <HomeSection />
         <ProductsSection />
         <ShowcaseSection />
+        <AppDevelopmentSection />
         <AboutSection />
         <ContactSection />
       </main>
