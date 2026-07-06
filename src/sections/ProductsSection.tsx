@@ -1,93 +1,82 @@
-import { motion } from 'framer-motion'
-import { ArrowUpRight } from 'lucide-react'
-import SectionCanvas from '../components/SectionCanvas'
-import ProductsScene3D from '../scenes/ProductsScene3D'
+import FadeIn from '../components/FadeIn'
+import AnimatedCodeEditor from '../components/AnimatedCodeEditor'
+import AnimatedBars from '../components/AnimatedBars'
 
 const products = [
   {
     name: 'CloudX Platform',
     tag: 'Cloud Infrastructure',
-    desc: 'Scalable cloud architecture with auto-healing and 99.99% uptime.',
-    gradient: 'from-orange to-amber',
-    span: 'lg:col-span-2 lg:row-span-2',
-    tall: true,
+    desc: 'Real-time monitoring of cloud infrastructure health and performance across your entire organization.',
+    features: [
+      'Multi-region deployment with auto-scaling',
+      '99.99% uptime SLA guarantee',
+      'Real-time performance dashboards',
+      'Industry-based infrastructure benchmarks',
+    ],
+    viz: 'code' as const,
   },
   {
     name: 'SecureAI Suite',
     tag: 'AI & Security',
-    desc: 'Enterprise AI with threat detection and predictive analytics.',
-    gradient: 'from-black to-charcoal',
-    span: '',
-    tall: false,
-  },
-  {
-    name: 'DataFlow Engine',
-    tag: 'Data Analytics',
-    desc: 'Real-time pipelines with visual workflow builder.',
-    gradient: 'from-orange-deep to-orange',
-    span: '',
-    tall: false,
-  },
-  {
-    name: 'NovaPay',
-    tag: 'FinTech',
-    desc: 'Secure payment infrastructure for modern businesses.',
-    gradient: 'from-charcoal to-dark',
-    span: 'lg:col-span-2',
-    tall: false,
+    desc: 'Comprehensive assessment of AI-generated code with risk heat maps and compliance tracking.',
+    features: [
+      'GenAI code risk assessment',
+      'Compliance automation (SOC 2, GDPR)',
+      'Threat detection and zero-trust security',
+      'Developer productivity analytics',
+    ],
+    viz: 'bars' as const,
   },
 ]
 
 export default function ProductsSection() {
   return (
-    <section id="products" className="relative py-28 bg-white">
+    <section id="products" className="py-28 bg-cream">
       <div className="max-w-7xl mx-auto px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="mb-16"
-        >
+        <FadeIn>
           <p className="section-label mb-3">Our Products</p>
-          <h2 className="heading-lg text-black max-w-2xl">
-            Solutions that <span className="text-accent">scale</span> with you
+          <h2 className="heading-lg text-black mb-4">
+            Built for teams that need to <span className="text-accent">move fast</span>
           </h2>
-        </motion.div>
+          <p className="text-muted max-w-2xl mb-16 leading-relaxed">
+            By partnering with developers and technologists, Famztech delivers platforms
+            that increase productivity while reducing operational and security risk.
+          </p>
+        </FadeIn>
 
-        <div className="grid lg:grid-cols-3 gap-5 auto-rows-[220px]">
+        <div className="grid lg:grid-cols-2 gap-8">
           {products.map((product, i) => (
-            <motion.article
-              key={product.name}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.08 }}
-              className={`card-lift relative rounded-3xl overflow-hidden cursor-pointer group ${product.span} ${product.tall ? 'min-h-[460px]' : ''}`}
-            >
-              <div className={`absolute inset-0 bg-gradient-to-br ${product.gradient}`} />
-              <div className="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition-colors duration-400" />
-
-              {product.tall && (
-                <div className="absolute inset-0 opacity-90">
-                  <SectionCanvas cameraPosition={[0, 0, 5]} fov={40}>
-                    <ProductsScene3D />
-                  </SectionCanvas>
+            <FadeIn key={product.name} delay={i * 0.12}>
+              <article className="bg-white rounded-2xl border border-black/8 overflow-hidden card-hover">
+                <div className="product-viz h-[200px]">
+                  {product.viz === 'code' ? (
+                    <AnimatedCodeEditor compact showChart />
+                  ) : (
+                    <AnimatedBars />
+                  )}
                 </div>
-              )}
-
-              <div className="relative z-10 h-full flex flex-col justify-end p-7">
-                <span className="text-xs font-semibold text-white/70 uppercase tracking-wider mb-2">
-                  {product.tag}
-                </span>
-                <h3 className="font-[family-name:var(--font-display)] text-2xl font-bold text-white mb-2">
-                  {product.name}
-                </h3>
-                <p className="text-sm text-white/75 max-w-xs leading-relaxed">{product.desc}</p>
-                <div className="mt-4 flex items-center gap-1 text-sm font-semibold text-white opacity-0 group-hover:opacity-100 transition-opacity">
-                  View product <ArrowUpRight size={16} />
+                <div className="p-8">
+                  <span className="text-xs font-semibold text-orange uppercase tracking-wider">
+                    {product.tag}
+                  </span>
+                  <h3 className="font-[family-name:var(--font-display)] text-2xl font-bold text-black mt-2 mb-3">
+                    {product.name}
+                  </h3>
+                  <p className="text-muted text-sm leading-relaxed mb-5">{product.desc}</p>
+                  <ul className="space-y-2 mb-6">
+                    {product.features.map((f) => (
+                      <li key={f} className="text-sm text-charcoal flex items-start gap-2">
+                        <span className="text-orange mt-0.5">—</span>
+                        {f}
+                      </li>
+                    ))}
+                  </ul>
+                  <a href="#contact" className="link-underline text-sm font-semibold text-orange">
+                    Learn more
+                  </a>
                 </div>
-              </div>
-            </motion.article>
+              </article>
+            </FadeIn>
           ))}
         </div>
       </div>

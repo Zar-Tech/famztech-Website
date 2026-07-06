@@ -1,31 +1,33 @@
 # Famztech
 
-Premium technology company website with section-specific 3D animations and interactive UI.
+Premium technology company website with Sema Software-inspired CSS animations.
+
+## Animations (Sema-style)
+
+- Animated code editor with blinking cursor, loading dots, and rotating donut chart
+- Scroll-triggered fade-in reveals (Intersection Observer)
+- Animated progress bars with colored segments
+- Particle twinkle effects on impact and contact sections
+- Gradient background shift on CTA
+- Button hover scale + glow, card lift, link underline
 
 ## Sections
 
-- **Home** — Floating tech core with orbiting particles
-- **Products** — Interactive 3D product cubes
-- **About Us** — Connected network visualization
-- **Contact** — Animated envelope with signal rings
+- **Home** — Hero with animated code editor
+- **Impact** — Large stat reveal with particles
+- **Products** — Product cards with code/bar visualizations
+- **About Us** — Feature grid with staggered scroll reveals
+- **Contact** — CTA with gradient shift, particles, and form
 
 ## Tech Stack
 
 - React + TypeScript + Vite
-- Three.js / React Three Fiber
-- Framer Motion
 - Tailwind CSS v4
+- Pure CSS animations (no Three.js, no Framer Motion)
 
 ## Development
 
 ```bash
 npm install
 npm run dev
-```
-
-## Build
-
-```bash
-npm run build
-npm run preview
 ```
