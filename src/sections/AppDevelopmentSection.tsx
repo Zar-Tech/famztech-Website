@@ -11,33 +11,6 @@ const approach = [
 export default function AppDevelopmentSection() {
   return (
     <section id="app-development" className="app-dev-section">
-      {/* Hero */}
-      <div className="app-dev-hero">
-        <span className="app-dev-badge">Famztech</span>
-        <div className="section-wrap app-dev-hero-grid">
-          <FadeIn>
-            <div className="app-dev-hero-text">
-              <h2 className="app-dev-hero-title">
-                App Development
-                <span className="app-dev-hero-sub">Mobile &amp; Web</span>
-              </h2>
-            </div>
-          </FadeIn>
-
-          <div className="app-dev-phones">
-            <FadeIn delay={0.1}>
-              <PhoneMockup theme="light" className="phone-pos-left" />
-            </FadeIn>
-            <FadeIn delay={0.2}>
-              <PhoneMockup theme="dark" className="phone-pos-center" />
-            </FadeIn>
-            <FadeIn delay={0.3}>
-              <PhoneMockup theme="orange" className="phone-pos-right" />
-            </FadeIn>
-          </div>
-        </div>
-      </div>
-
       {/* Content */}
       <div className="app-dev-content section-pad">
         <div className="section-wrap app-dev-content-grid">
