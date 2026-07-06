@@ -3,14 +3,17 @@ import { products } from '../data/products'
 
 const exploreLinks = [
   { label: 'Home', href: '#home' },
-  { label: 'About Us', href: '#about' },
+  { label: 'Services', href: '#services' },
   { label: 'App Development', href: '#app-development' },
   { label: 'Contact', href: '#contact' },
 ]
 
 const expertise = [
-  ...products.map((p) => p.name),
   'App Development',
+  'Web Development',
+  'UI/UX Design',
+  'Custom Software',
+  ...products.map((p) => p.name),
 ]
 
 export default function Footer() {

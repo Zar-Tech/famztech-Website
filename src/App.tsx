@@ -3,7 +3,7 @@ import Footer from './components/Footer'
 import HomeSection from './sections/HomeSection'
 import ProductsSection from './sections/ProductsSection'
 import AppDevelopmentSection from './sections/AppDevelopmentSection'
-import AboutSection from './sections/AboutSection'
+import ServicesSection from './sections/ServicesSection'
 import ContactSection from './sections/ContactSection'
 
 export default function App() {
@@ -14,7 +14,7 @@ export default function App() {
         <HomeSection />
         <ProductsSection />
         <AppDevelopmentSection />
-        <AboutSection />
+        <ServicesSection />
         <ContactSection />
       </main>
       <Footer />
