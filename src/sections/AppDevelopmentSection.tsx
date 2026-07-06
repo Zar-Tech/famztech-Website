@@ -3,11 +3,9 @@ import FadeIn from '../components/FadeIn'
 import PhoneMockup from '../components/PhoneMockup'
 
 const approach = [
-  'User-centered mobile & web experiences',
+  'User-first mobile & web experiences',
   'Scalable design systems & architecture',
-  'High-conversion product interfaces',
-  'Clean, implementation-ready code',
-  'Consistent experiences across platforms',
+  'Clean, production-ready code',
 ]
 
 export default function AppDevelopmentSection() {
@@ -45,25 +43,20 @@ export default function AppDevelopmentSection() {
         <div className="section-wrap app-dev-content-inner">
           <FadeIn>
             <p className="app-dev-lead">
-              We build mobile and web applications focused on scalability, usability,
-              and business growth.
+              Mobile &amp; web apps built to scale.
             </p>
-            <p className="body-lg text-muted mb-8 max-w-prose">
-              Our portfolio spans fintech, SaaS, and enterprise products — combining clean UI,
-              intuitive UX, and architectures built for modern technology ecosystems.
+            <p className="app-dev-body">
+              Fintech, SaaS, and enterprise — clean UI, sharp UX, and architecture
+              that grows with you.
             </p>
-            <p className="body font-semibold text-black mb-4">Our approach focuses on:</p>
             <ul className="app-dev-list">
               {approach.map((item) => (
                 <li key={item}>{item}</li>
               ))}
             </ul>
-            <p className="body text-muted mt-8 max-w-prose leading-relaxed">
-              From concept to launch, Famztech helps startups and enterprises transform ideas
-              into polished digital experiences ready to scale.
-            </p>
-            <a href="#contact" className="link-underline body-sm font-semibold text-orange mt-6 inline-block">
-              Book a discovery call
+            <a href="#contact" className="app-dev-link">
+              Book a call
+              <ArrowRight size={16} strokeWidth={2.25} />
             </a>
           </FadeIn>
         </div>
