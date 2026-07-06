@@ -5,9 +5,11 @@ import { products } from '../data/products'
 
 export default function ProductsSection() {
   const gridClass =
-    products.length >= 3
-      ? 'product-grid product-grid-3'
-      : 'product-grid product-grid-2'
+    products.length >= 4
+      ? 'product-grid product-grid-4'
+      : products.length >= 3
+        ? 'product-grid product-grid-3'
+        : 'product-grid product-grid-2'
 
   return (
     <section id="products" className="section-pad bg-cream">
@@ -16,7 +18,7 @@ export default function ProductsSection() {
           <SectionHeader
             label="Our Products"
             title={<>Built for teams that need to <span className="text-accent">move fast</span></>}
-            description="Explore the Famztech product suite — platforms that increase productivity while reducing operational and security risk."
+            description="Explore the Famztech product suite — from mobile apps to enterprise platforms built for real-world impact."
           />
         </FadeIn>
 

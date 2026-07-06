@@ -634,6 +634,132 @@ body {
   50% { opacity: 1; transform: scale(1); }
 }
 
+.product-viz-mobile {
+  padding: 1rem;
+}
+
+.viz-mobile-frame {
+  width: 130px;
+  background: #1a1a1a;
+  border-radius: 1.25rem;
+  padding: 0.35rem;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
+  position: relative;
+}
+
+.viz-mobile-notch {
+  position: absolute;
+  top: 0.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2.5rem;
+  height: 0.65rem;
+  background: #000;
+  border-radius: 9999px;
+  z-index: 2;
+}
+
+.viz-mobile-screen {
+  background: linear-gradient(180deg, #faf9f7 0%, #fff 100%);
+  border-radius: 1rem;
+  padding: 1.5rem 0.75rem 0.75rem;
+  min-height: 140px;
+  display: flex;
+  flex-direction: column;
+}
+
+.viz-mobile-title {
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--color-orange);
+  text-align: center;
+  margin-bottom: 0.15rem;
+}
+
+.viz-mobile-sub {
+  font-size: 0.5rem;
+  color: #999;
+  text-align: center;
+  margin-bottom: 0.6rem;
+}
+
+.viz-prayer-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  flex: 1;
+}
+
+.viz-prayer-list li {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.5625rem;
+  font-weight: 500;
+  color: #555;
+  padding: 0.25rem 0.35rem;
+  border-radius: 0.35rem;
+  background: rgba(0, 0, 0, 0.03);
+}
+
+.viz-prayer-done {
+  color: var(--color-orange-deep);
+}
+
+.viz-prayer-check {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  border: 1.5px solid #ccc;
+  flex-shrink: 0;
+}
+
+.viz-prayer-done .viz-prayer-check {
+  background: var(--color-orange);
+  border-color: var(--color-orange);
+}
+
+.viz-mobile-streak {
+  margin-top: 0.5rem;
+  text-align: center;
+  padding-top: 0.4rem;
+  border-top: 1px solid #eee;
+}
+
+.viz-streak-num {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--color-orange);
+  line-height: 1;
+}
+
+.viz-streak-label {
+  font-size: 0.4375rem;
+  color: #999;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.product-grid-4 {
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 768px) {
+  .product-grid-4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1280px) {
+  .product-grid-4 {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
 .product-viz {
   background: var(--color-black);
   min-height: 180px;

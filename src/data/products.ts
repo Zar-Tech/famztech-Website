@@ -2,7 +2,7 @@
  * Famztech products — edit this file to add or update your products.
  * Each entry appears in the Products section on the website.
  */
-export type ProductViz = 'code' | 'bars' | 'grid'
+export type ProductViz = 'code' | 'bars' | 'grid' | 'mobile'
 
 export interface Product {
   id: string
@@ -14,9 +14,29 @@ export interface Product {
   viz: ProductViz
   ctaLabel?: string
   ctaHref?: string
+  external?: boolean
 }
 
 export const products: Product[] = [
+  {
+    id: 'sabr',
+    name: 'Sabr Prayer Tracker',
+    tag: 'Mobile App · iOS',
+    description:
+      'A beautifully simple prayer tracker that helps you stay consistent with your five daily prayers. Accurate times, gentle reminders, and streaks — all private on your device.',
+    features: [
+      'Accurate prayer times by location or city',
+      'One-tap tracking for five daily prayers',
+      'Streaks and progress insights',
+      'Customizable prayer reminders',
+      'Works fully offline — no account required',
+    ],
+    price: 'Free',
+    viz: 'mobile',
+    ctaLabel: 'View on App Store',
+    ctaHref: 'https://apps.apple.com/pk/app/sabr-prayer-tracker/id6783087332',
+    external: true,
+  },
   {
     id: 'cloudx',
     name: 'CloudX Platform',

@@ -29,6 +29,9 @@ export default function ProductCard({ product }: ProductCardProps) {
         <a
           href={product.ctaHref ?? '#contact'}
           className="product-cta link-underline"
+          {...(product.external
+            ? { target: '_blank', rel: 'noopener noreferrer' }
+            : {})}
         >
           {product.ctaLabel ?? 'Learn more'}
           <ArrowUpRight size={14} />
