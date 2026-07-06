@@ -884,376 +884,41 @@ body {
   border-color: var(--color-orange);
 }
 
-/* ── Tech hardware visualization (Dribbble-inspired) ── */
+/* ── Tech hardware visualization (Dribbble original) ── */
 
 .hardware-section {
   position: relative;
-  padding-block: 5rem 6rem;
-  background: linear-gradient(135deg, #e8edf3 0%, #f5f8fb 50%, #eef2f6 100%);
+  padding-block: 0;
+  background: linear-gradient(180deg, #eef1f5 0%, #f7f9fb 45%, #eceff3 100%);
   overflow: hidden;
-}
-
-@media (min-width: 1024px) {
-  .hardware-section {
-    padding-block: 6rem 7rem;
-  }
-}
-
-.hardware-inner {
-  display: grid;
-  gap: 3rem;
-  align-items: center;
-}
-
-@media (min-width: 1024px) {
-  .hardware-inner {
-    grid-template-columns: 1fr 1.2fr;
-    gap: 2rem;
-  }
-}
-
-.hardware-copy {
-  max-width: 26rem;
-}
-
-.hardware-title {
-  font-family: var(--font-display);
-  font-size: clamp(1.875rem, 3.5vw, 2.75rem);
-  font-weight: 700;
-  line-height: 1.15;
-  letter-spacing: -0.025em;
-  color: var(--color-black);
-  margin-bottom: 1rem;
-  text-wrap: balance;
-}
-
-.hardware-desc {
-  font-size: 1rem;
-  line-height: 1.7;
-  color: var(--color-muted);
-  max-width: 40ch;
-}
-
-.hardware-fade {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 5rem;
-  background: linear-gradient(to bottom, transparent, rgba(10, 10, 10, 0.04));
-  pointer-events: none;
 }
 
 .hw-viz {
   width: 100%;
-  max-width: 520px;
+  max-width: 72rem;
   margin-inline: auto;
-  aspect-ratio: 1;
-  position: relative;
+  line-height: 0;
 }
 
-.hw-scene {
-  width: 100%;
-  height: 100%;
-  position: relative;
-  perspective: 900px;
-  transform-style: preserve-3d;
-  animation: hwSceneRotate 28s linear infinite;
-}
-
-@keyframes hwSceneRotate {
-  from { transform: rotateY(-12deg) rotateX(8deg); }
-  to { transform: rotateY(348deg) rotateX(8deg); }
-}
-
-.hw-core {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -45%);
-  transform-style: preserve-3d;
-  animation: hwCoreFloat 5s ease-in-out infinite;
-  z-index: 5;
-}
-
-@keyframes hwCoreFloat {
-  0%, 100% { transform: translate(-50%, -45%) translateY(0); }
-  50% { transform: translate(-50%, -45%) translateY(-10px); }
-}
-
-.hw-core-body {
-  width: 140px;
-  height: 90px;
-  background: linear-gradient(145deg, #fff 0%, #f0f4f8 100%);
-  border-radius: 10px;
-  box-shadow:
-    0 20px 50px rgba(0, 0, 0, 0.12),
-    inset 0 1px 0 rgba(255, 255, 255, 0.9);
-  border: 1px solid rgba(255, 255, 255, 0.8);
-  display: flex;
-  gap: 8px;
-  align-items: center;
-  justify-content: center;
-  transform: rotateX(55deg) rotateZ(-45deg);
-  transform-style: preserve-3d;
-}
-
-.hw-core-slot {
-  width: 28px;
-  height: 50px;
-  border-radius: 4px;
-  background: linear-gradient(180deg, #d4dce6, #b8c5d4);
-  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.hw-pyramid {
-  position: absolute;
-  left: 50%;
-  top: -55px;
-  width: 70px;
-  height: 70px;
-  transform: translateX(-50%) rotateX(55deg) rotateZ(-45deg);
-  transform-style: preserve-3d;
-  animation: hwPyramidGlow 3s ease-in-out infinite;
-}
-
-@keyframes hwPyramidGlow {
-  0%, 100% { filter: drop-shadow(0 0 12px rgba(43, 127, 216, 0.4)); }
-  50% { filter: drop-shadow(0 0 24px rgba(43, 127, 216, 0.75)); }
-}
-
-.hw-pyramid-face {
-  position: absolute;
-  width: 0;
-  height: 0;
-  left: 50%;
-  transform-origin: center bottom;
-}
-
-.hw-pyramid-face.f1 {
-  border-left: 35px solid transparent;
-  border-right: 35px solid transparent;
-  border-bottom: 55px solid rgba(43, 127, 216, 0.85);
-  transform: translateX(-50%) rotateY(0deg) translateZ(20px);
-  opacity: 0.9;
-}
-
-.hw-pyramid-face.f2 {
-  border-left: 35px solid transparent;
-  border-right: 35px solid transparent;
-  border-bottom: 55px solid rgba(74, 159, 245, 0.7);
-  transform: translateX(-50%) rotateY(90deg) translateZ(20px);
-}
-
-.hw-pyramid-face.f3 {
-  border-left: 35px solid transparent;
-  border-right: 35px solid transparent;
-  border-bottom: 55px solid rgba(255, 87, 34, 0.5);
-  transform: translateX(-50%) rotateY(180deg) translateZ(20px);
-}
-
-.hw-pyramid-face.f4 {
-  border-left: 35px solid transparent;
-  border-right: 35px solid transparent;
-  border-bottom: 55px solid rgba(107, 181, 255, 0.6);
-  transform: translateX(-50%) rotateY(270deg) translateZ(20px);
-}
-
-.hw-core-glow {
-  position: absolute;
-  width: 180px;
-  height: 80px;
-  left: 50%;
-  top: 60%;
-  transform: translate(-50%, -50%);
-  background: radial-gradient(ellipse, rgba(43, 127, 216, 0.25), transparent 70%);
-  pointer-events: none;
-  animation: hwGlowPulse 3s ease-in-out infinite;
-}
-
-@keyframes hwGlowPulse {
-  0%, 100% { opacity: 0.5; transform: translate(-50%, -50%) scale(1); }
-  50% { opacity: 1; transform: translate(-50%, -50%) scale(1.1); }
-}
-
-.hw-base-shadow {
-  position: absolute;
-  left: 50%;
-  top: 62%;
-  width: 200px;
-  height: 40px;
-  transform: translateX(-50%);
-  background: radial-gradient(ellipse, rgba(0, 0, 0, 0.15), transparent 70%);
-  filter: blur(8px);
-}
-
-.hw-orbit {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 3;
-}
-
-.hw-orbit-1 {
-  animation: hwOrbit1 6s ease-in-out infinite;
-}
-
-.hw-orbit-2 {
-  animation: hwOrbit2 7s ease-in-out infinite;
-}
-
-.hw-orbit-3 {
-  animation: hwOrbit3 5.5s ease-in-out infinite;
-}
-
-.hw-orbit-4 {
-  animation: hwOrbit4 6.5s ease-in-out infinite;
-}
-
-@keyframes hwOrbit1 {
-  0%, 100% { transform: translate(calc(-50% - 120px), calc(-50% - 80px)); }
-  50% { transform: translate(calc(-50% - 125px), calc(-50% - 95px)); }
-}
-
-@keyframes hwOrbit2 {
-  0%, 100% { transform: translate(calc(-50% + 130px), calc(-50% - 70px)); }
-  50% { transform: translate(calc(-50% + 135px), calc(-50% - 85px)); }
-}
-
-@keyframes hwOrbit3 {
-  0%, 100% { transform: translate(calc(-50% + 110px), calc(-50% + 90px)); }
-  50% { transform: translate(calc(-50% + 115px), calc(-50% + 75px)); }
-}
-
-@keyframes hwOrbit4 {
-  0%, 100% { transform: translate(calc(-50% - 100px), calc(-50% + 85px)); }
-  50% { transform: translate(calc(-50% - 105px), calc(-50% + 70px)); }
-}
-
-.hw-panel {
-  border-radius: 8px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
-}
-
-.hw-panel-data {
-  width: 64px;
-  height: 48px;
-  background: linear-gradient(145deg, #1a5c9e, #2b7fd8);
-  padding: 8px;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  justify-content: center;
-}
-
-.hw-panel-line {
+.hw-viz-video {
   display: block;
-  height: 3px;
-  border-radius: 2px;
-  background: rgba(255, 255, 255, 0.7);
-  width: 80%;
-}
-
-.hw-panel-line.short {
-  width: 50%;
-}
-
-.hw-panel-line.light {
-  background: rgba(255, 255, 255, 0.5);
-}
-
-.hw-panel-glass {
-  width: 56px;
-  height: 72px;
-  background: rgba(107, 181, 255, 0.28);
-  backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.4);
-}
-
-.hw-panel-dark {
-  width: 58px;
-  height: 44px;
-  background: linear-gradient(145deg, #1a5c9e, #2563a8);
-  padding: 8px;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  justify-content: center;
-}
-
-.hw-node {
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  background: #fff;
-  border: 2px solid #4a9ff5;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 6px 16px rgba(43, 127, 216, 0.25);
-}
-
-.hw-gear {
-  width: 20px;
-  height: 20px;
-  border: 3px solid #2b7fd8;
-  border-radius: 50%;
-  border-style: dashed;
-  animation: hwGearSpin 8s linear infinite;
-}
-
-@keyframes hwGearSpin {
-  to { transform: rotate(360deg); }
-}
-
-.hw-lines {
-  position: absolute;
-  inset: 0;
   width: 100%;
-  height: 100%;
-  z-index: 2;
-  pointer-events: none;
-}
-
-.hw-line {
-  stroke: #6bb5ff;
-  stroke-width: 1.5;
-  opacity: 0.45;
-  stroke-dasharray: 4 4;
-}
-
-.hw-flow {
-  fill: #4a9ff5;
-  opacity: 0.8;
-}
-
-@media (max-width: 768px) {
-  .hw-scene {
-    animation: none;
-    transform: rotateY(-20deg) rotateX(10deg);
-  }
-
-  .hw-viz {
-    max-width: 340px;
-  }
+  height: auto;
+  object-fit: contain;
+  background: transparent;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .hw-scene,
-  .hw-core,
-  .hw-pyramid,
-  .hw-core-glow,
-  .hw-orbit-1,
-  .hw-orbit-2,
-  .hw-orbit-3,
-  .hw-orbit-4,
-  .hw-gear {
-    animation: none !important;
+  .hw-viz-video {
+    display: none;
   }
 
-  .hw-flow {
-    display: none;
+  .hw-viz::after {
+    content: '';
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background: url('/media/tech-hardware-viz-poster.png') center / contain no-repeat;
   }
 }
 
