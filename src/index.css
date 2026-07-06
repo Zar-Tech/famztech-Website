@@ -896,6 +896,23 @@ body {
     #fff6f1 100%
   );
   overflow: hidden;
+  display: flex;
+  justify-content: center;
+}
+
+.hardware-section-inner {
+  width: 100%;
+  max-width: 72rem;
+  margin-inline: auto;
+  padding-inline: 1.5rem;
+  display: flex;
+  justify-content: center;
+}
+
+.hardware-section-inner .fade-in {
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 .hardware-section::after {
@@ -911,21 +928,28 @@ body {
 
 .hw-viz {
   width: 100%;
-  max-width: 72rem;
+  max-width: 56rem;
   margin-inline: auto;
   line-height: 0;
+  display: flex;
+  justify-content: center;
 }
 
 .hw-viz-frame {
   position: relative;
   isolation: isolate;
+  width: 100%;
+  margin-inline: auto;
 }
 
 .hw-viz-video {
   display: block;
   width: 100%;
+  max-width: 100%;
   height: auto;
+  margin-inline: auto;
   object-fit: contain;
+  object-position: center center;
   background: transparent;
   filter: hue-rotate(168deg) saturate(1.18) brightness(1.05) contrast(1.03);
 }
