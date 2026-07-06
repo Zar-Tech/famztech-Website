@@ -884,13 +884,29 @@ body {
   border-color: var(--color-orange);
 }
 
-/* ── Tech hardware visualization (Dribbble original) ── */
+/* ── Tech hardware visualization (themed) ── */
 
 .hardware-section {
   position: relative;
   padding-block: 0;
-  background: linear-gradient(180deg, #eef1f5 0%, #f7f9fb 45%, #eceff3 100%);
+  background: linear-gradient(
+    180deg,
+    var(--color-cream) 0%,
+    #ffffff 42%,
+    #fff6f1 100%
+  );
   overflow: hidden;
+}
+
+.hardware-section::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 6rem;
+  background: linear-gradient(to bottom, transparent, rgba(10, 10, 10, 0.06));
+  pointer-events: none;
 }
 
 .hw-viz {
@@ -900,12 +916,31 @@ body {
   line-height: 0;
 }
 
+.hw-viz-frame {
+  position: relative;
+  isolation: isolate;
+}
+
 .hw-viz-video {
   display: block;
   width: 100%;
   height: auto;
   object-fit: contain;
   background: transparent;
+  filter: hue-rotate(168deg) saturate(1.18) brightness(1.05) contrast(1.03);
+}
+
+.hw-viz-tint {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    145deg,
+    rgba(255, 87, 34, 0.1) 0%,
+    rgba(255, 152, 0, 0.06) 45%,
+    rgba(255, 255, 255, 0.04) 100%
+  );
+  mix-blend-mode: multiply;
+  pointer-events: none;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -913,12 +948,17 @@ body {
     display: none;
   }
 
-  .hw-viz::after {
+  .hw-viz-tint {
+    display: none;
+  }
+
+  .hw-viz-frame::after {
     content: '';
     display: block;
     width: 100%;
     aspect-ratio: 16 / 9;
     background: url('/media/tech-hardware-viz-poster.png') center / contain no-repeat;
+    filter: hue-rotate(168deg) saturate(1.18) brightness(1.05) contrast(1.03);
   }
 }
 
