@@ -40,24 +40,33 @@ export default function AppDevelopmentSection() {
 
       {/* Content */}
       <div className="app-dev-content section-pad">
-        <div className="section-wrap app-dev-content-inner">
+        <div className="section-wrap app-dev-content-grid">
           <FadeIn>
-            <p className="app-dev-lead">
-              Mobile &amp; web apps built to scale.
-            </p>
-            <p className="app-dev-body">
-              Fintech, SaaS, and enterprise — clean UI, sharp UX, and architecture
-              that grows with you.
-            </p>
-            <ul className="app-dev-list">
-              {approach.map((item) => (
-                <li key={item}>{item}</li>
-              ))}
-            </ul>
-            <a href="#contact" className="app-dev-link">
-              Book a call
-              <ArrowRight size={16} strokeWidth={2.25} />
-            </a>
+            <div className="app-dev-copy">
+              <p className="section-label">Our Approach</p>
+              <h3 className="heading-lg text-black mb-5">
+                Mobile &amp; web apps built to <span className="text-accent">scale</span>
+              </h3>
+              <p className="body-lg text-muted mb-8 max-w-prose">
+                Fintech, SaaS, and enterprise — clean UI, sharp UX, and architecture
+                that grows with you.
+              </p>
+              <a href="#contact" className="btn-primary">
+                Book a call
+                <ArrowRight size={16} />
+              </a>
+            </div>
+          </FadeIn>
+
+          <FadeIn delay={0.1}>
+            <div className="app-dev-features">
+              <p className="app-dev-features-label">What we deliver</p>
+              <ul className="app-dev-list">
+                {approach.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+            </div>
           </FadeIn>
         </div>
       </div>
