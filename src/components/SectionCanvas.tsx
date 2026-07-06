@@ -1,36 +1,29 @@
 import { Suspense } from 'react'
 import { Canvas } from '@react-three/fiber'
-import { Loader } from '@react-three/drei'
 
 interface SectionCanvasProps {
   children: React.ReactNode
   cameraPosition?: [number, number, number]
   fov?: number
+  className?: string
 }
 
 export default function SectionCanvas({
   children,
-  cameraPosition = [0, 0, 6],
+  cameraPosition = [0, 0, 5],
   fov = 45,
+  className = '',
 }: SectionCanvasProps) {
   return (
-    <div className="section-canvas">
+    <div className={`section-canvas ${className}`}>
       <Canvas
         camera={{ position: cameraPosition, fov }}
-        dpr={[1, 2]}
+        dpr={[1, 1.5]}
         gl={{ antialias: true, alpha: true }}
         style={{ background: 'transparent' }}
       >
-        <Suspense fallback={null}>
-          {children}
-        </Suspense>
+        <Suspense fallback={null}>{children}</Suspense>
       </Canvas>
-      <Loader
-        containerStyles={{ display: 'none' }}
-        innerStyles={{ display: 'none' }}
-        barStyles={{ display: 'none' }}
-        dataStyles={{ display: 'none' }}
-      />
     </div>
   )
 }

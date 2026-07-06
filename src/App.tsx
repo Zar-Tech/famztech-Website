@@ -7,7 +7,7 @@ import ContactSection from './sections/ContactSection'
 
 export default function App() {
   return (
-    <div className="min-h-screen bg-midnight">
+    <div className="min-h-screen bg-white">
       <Navbar />
       <main>
         <HomeSection />

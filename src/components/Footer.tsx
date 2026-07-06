@@ -1,4 +1,4 @@
-import { Globe, Share2, Code2 } from 'lucide-react'
+import { ArrowRight } from 'lucide-react'
 
 const footerLinks = [
   { label: 'Home', href: '#home' },
@@ -7,56 +7,64 @@ const footerLinks = [
   { label: 'Contact', href: '#contact' },
 ]
 
-const socials = [
-  { icon: Share2, href: '#', label: 'Social' },
-  { icon: Globe, href: '#', label: 'Website' },
-  { icon: Code2, href: '#', label: 'GitHub' },
-]
+const services = ['Cloud Solutions', 'AI & Security', 'Data Analytics', 'Product Design']
 
 export default function Footer() {
   return (
-    <footer className="relative border-t border-white/5 bg-midnight">
-      <div className="max-w-7xl mx-auto px-6 py-12">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-8">
-          <div className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-500 to-cyan-400 flex items-center justify-center font-bold text-white text-xs">
-              F
+    <footer className="bg-black text-white">
+      <div className="max-w-7xl mx-auto px-6 pt-20 pb-10">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+          <div className="lg:col-span-2">
+            <div className="flex items-center gap-2.5 mb-5">
+              <div className="w-9 h-9 rounded-full bg-orange flex items-center justify-center font-bold text-white text-sm">
+                F
+              </div>
+              <span className="font-[family-name:var(--font-display)] text-xl font-bold">
+                Famz<span className="text-accent">tech</span>
+              </span>
             </div>
-            <span className="font-[family-name:var(--font-display)] text-lg font-bold">
-              Famz<span className="text-gradient">tech</span>
-            </span>
+            <p className="text-white/50 text-sm leading-relaxed max-w-sm mb-6">
+              We design world-class digital products and help startups &amp; enterprises
+              delight humans on the other side of the screen.
+            </p>
+            <a href="#contact" className="btn-primary text-sm">
+              Contact Us <ArrowRight size={16} />
+            </a>
           </div>
 
-          <div className="flex flex-wrap justify-center gap-6">
-            {footerLinks.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                className="text-sm text-slate-400 hover:text-white transition-colors"
-              >
-                {link.label}
-              </a>
-            ))}
+          <div>
+            <h4 className="text-sm font-semibold mb-4">Company</h4>
+            <ul className="space-y-2.5">
+              {footerLinks.map((link) => (
+                <li key={link.href}>
+                  <a href={link.href} className="text-sm text-white/50 hover:text-orange transition-colors">
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
           </div>
 
-          <div className="flex gap-3">
-            {socials.map((s) => (
-              <a
-                key={s.label}
-                href={s.href}
-                aria-label={s.label}
-                className="w-9 h-9 rounded-lg glass flex items-center justify-center text-slate-400 hover:text-white hover:bg-white/10 transition-all"
-              >
-                <s.icon size={16} />
-              </a>
-            ))}
+          <div>
+            <h4 className="text-sm font-semibold mb-4">Services</h4>
+            <ul className="space-y-2.5">
+              {services.map((s) => (
+                <li key={s}>
+                  <span className="text-sm text-white/50">{s}</span>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
 
-        <div className="mt-8 pt-8 border-t border-white/5 text-center">
-          <p className="text-xs text-slate-500">
-            &copy; {new Date().getFullYear()} Famztech. All rights reserved. Crafted with precision.
+        <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-4">
+          <p className="text-xs text-white/40">
+            &copy; {new Date().getFullYear()} Famztech. All rights reserved.
           </p>
+          <div className="flex gap-6">
+            <a href="#" className="text-xs text-white/40 hover:text-white transition-colors">Privacy Policy</a>
+            <a href="#" className="text-xs text-white/40 hover:text-white transition-colors">Terms</a>
+          </div>
         </div>
       </div>
     </footer>

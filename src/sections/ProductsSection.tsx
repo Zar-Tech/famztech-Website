@@ -1,126 +1,94 @@
-import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { Check, ExternalLink } from 'lucide-react'
+import { ArrowUpRight } from 'lucide-react'
 import SectionCanvas from '../components/SectionCanvas'
 import ProductsScene3D from '../scenes/ProductsScene3D'
 
-const productList = [
+const products = [
   {
     name: 'CloudX Platform',
     tag: 'Cloud Infrastructure',
-    desc: 'Scalable cloud architecture with auto-healing, global CDN, and 99.99% uptime guarantee.',
-    features: ['Multi-region deployment', 'Auto-scaling', 'Real-time monitoring'],
-    price: 'From $49/mo',
+    desc: 'Scalable cloud architecture with auto-healing and 99.99% uptime.',
+    gradient: 'from-orange to-amber',
+    span: 'lg:col-span-2 lg:row-span-2',
+    tall: true,
   },
   {
     name: 'SecureAI Suite',
     tag: 'AI & Security',
-    desc: 'Enterprise AI with built-in threat detection, compliance automation, and predictive analytics.',
-    features: ['ML-powered insights', 'SOC 2 compliant', 'Zero-trust security'],
-    price: 'From $99/mo',
+    desc: 'Enterprise AI with threat detection and predictive analytics.',
+    gradient: 'from-black to-charcoal',
+    span: '',
+    tall: false,
   },
   {
     name: 'DataFlow Engine',
     tag: 'Data Analytics',
-    desc: 'Real-time data pipelines with visual workflow builder and advanced visualization dashboards.',
-    features: ['Stream processing', 'Custom dashboards', 'API integrations'],
-    price: 'From $79/mo',
+    desc: 'Real-time pipelines with visual workflow builder.',
+    gradient: 'from-orange-deep to-orange',
+    span: '',
+    tall: false,
+  },
+  {
+    name: 'NovaPay',
+    tag: 'FinTech',
+    desc: 'Secure payment infrastructure for modern businesses.',
+    gradient: 'from-charcoal to-dark',
+    span: 'lg:col-span-2',
+    tall: false,
   },
 ]
 
 export default function ProductsSection() {
-  const [activeProduct, setActiveProduct] = useState(0)
-
   return (
-    <section id="products" className="relative py-28 overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-b from-slate-deep via-obsidian to-midnight" />
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-amber-500/5 rounded-full blur-[100px]" />
-
-      <div className="relative max-w-7xl mx-auto px-6">
+    <section id="products" className="relative py-28 bg-white">
+      <div className="max-w-7xl mx-auto px-6">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="mb-16"
         >
-          <span className="text-sm font-medium text-amber-400 tracking-wider uppercase">Our Products</span>
-          <h2 className="font-[family-name:var(--font-display)] text-4xl md:text-5xl font-bold mt-3 mb-4">
-            Solutions That <span className="text-gradient-gold">Scale</span>
+          <p className="section-label mb-3">Our Products</p>
+          <h2 className="heading-lg text-black max-w-2xl">
+            Solutions that <span className="text-accent">scale</span> with you
           </h2>
-          <p className="text-slate-400 max-w-2xl mx-auto">
-            Premium tools engineered for performance, security, and seamless integration.
-          </p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7 }}
-            className="space-y-4"
-          >
-            {productList.map((product, i) => (
-              <motion.div
-                key={product.name}
-                onClick={() => setActiveProduct(i)}
-                className={`glass rounded-2xl p-6 cursor-pointer transition-all duration-300 ${
-                  activeProduct === i
-                    ? 'bg-white/8 border-amber-500/30 glow-gold'
-                    : 'hover:bg-white/5'
-                }`}
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-              >
-                <div className="flex items-start justify-between">
-                  <div>
-                    <span className="text-xs font-medium text-amber-400">{product.tag}</span>
-                    <h3 className="text-xl font-semibold text-white mt-1">{product.name}</h3>
-                  </div>
-                  <span className="text-sm font-semibold text-slate-400">{product.price}</span>
-                </div>
-                <p className="text-sm text-slate-400 mt-2 leading-relaxed">{product.desc}</p>
-                {activeProduct === i && (
-                  <motion.div
-                    initial={{ opacity: 0, height: 0 }}
-                    animate={{ opacity: 1, height: 'auto' }}
-                    className="mt-4 pt-4 border-t border-white/10"
-                  >
-                    <ul className="space-y-2 mb-4">
-                      {product.features.map((f) => (
-                        <li key={f} className="flex items-center gap-2 text-sm text-slate-300">
-                          <Check size={14} className="text-amber-400" />
-                          {f}
-                        </li>
-                      ))}
-                    </ul>
-                    <button className="inline-flex items-center gap-2 text-sm font-semibold text-amber-400 hover:text-amber-300 transition-colors">
-                      View Details <ExternalLink size={14} />
-                    </button>
-                  </motion.div>
-                )}
-              </motion.div>
-            ))}
-          </motion.div>
+        <div className="grid lg:grid-cols-3 gap-5 auto-rows-[220px]">
+          {products.map((product, i) => (
+            <motion.article
+              key={product.name}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.08 }}
+              className={`card-lift relative rounded-3xl overflow-hidden cursor-pointer group ${product.span} ${product.tall ? 'min-h-[460px]' : ''}`}
+            >
+              <div className={`absolute inset-0 bg-gradient-to-br ${product.gradient}`} />
+              <div className="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition-colors duration-400" />
 
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7 }}
-            className="relative h-[450px] rounded-3xl overflow-hidden glass glow-gold"
-          >
-            <SectionCanvas cameraPosition={[0, 0, 7]} fov={50}>
-              <ProductsScene3D />
-            </SectionCanvas>
-            <div className="absolute top-4 right-4 glass rounded-lg px-3 py-1.5 pointer-events-none">
-              <p className="text-xs text-amber-400 font-medium">Interactive 3D</p>
-            </div>
-            <p className="absolute bottom-4 left-4 right-4 text-center text-xs text-slate-500 pointer-events-none">
-              Hover over product cubes to interact
-            </p>
-          </motion.div>
+              {product.tall && (
+                <div className="absolute inset-0 opacity-90">
+                  <SectionCanvas cameraPosition={[0, 0, 5]} fov={40}>
+                    <ProductsScene3D />
+                  </SectionCanvas>
+                </div>
+              )}
+
+              <div className="relative z-10 h-full flex flex-col justify-end p-7">
+                <span className="text-xs font-semibold text-white/70 uppercase tracking-wider mb-2">
+                  {product.tag}
+                </span>
+                <h3 className="font-[family-name:var(--font-display)] text-2xl font-bold text-white mb-2">
+                  {product.name}
+                </h3>
+                <p className="text-sm text-white/75 max-w-xs leading-relaxed">{product.desc}</p>
+                <div className="mt-4 flex items-center gap-1 text-sm font-semibold text-white opacity-0 group-hover:opacity-100 transition-opacity">
+                  View product <ArrowUpRight size={16} />
+                </div>
+              </div>
+            </motion.article>
+          ))}
         </div>
       </div>
     </section>

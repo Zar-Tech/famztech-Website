@@ -1,6 +1,6 @@
 import { useState, type FormEvent } from 'react'
 import { motion } from 'framer-motion'
-import { Mail, Phone, MapPin, Send, CheckCircle } from 'lucide-react'
+import { ArrowRight, CheckCircle, Mail, MapPin, Phone } from 'lucide-react'
 import SectionCanvas from '../components/SectionCanvas'
 import ContactScene3D from '../scenes/ContactScene3D'
 
@@ -10,8 +10,16 @@ const contactInfo = [
   { icon: MapPin, label: 'Office', value: 'San Francisco, CA' },
 ]
 
+const helpOptions = [
+  'Take your product to the next level',
+  'Build a new platform from scratch',
+  'Scale existing infrastructure',
+  'Launch fast',
+]
+
 export default function ContactSection() {
   const [submitted, setSubmitted] = useState(false)
+  const [selectedHelp, setSelectedHelp] = useState(0)
   const [formData, setFormData] = useState({ name: '', email: '', message: '' })
 
   const handleSubmit = (e: FormEvent) => {
@@ -22,124 +30,138 @@ export default function ContactSection() {
   }
 
   return (
-    <section id="contact" className="relative py-28 overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-b from-slate-deep via-obsidian to-midnight" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] bg-cyan-500/5 rounded-full blur-[120px]" />
-
-      <div className="relative max-w-7xl mx-auto px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
-          <span className="text-sm font-medium text-cyan-400 tracking-wider uppercase">Contact</span>
-          <h2 className="font-[family-name:var(--font-display)] text-4xl md:text-5xl font-bold mt-3 mb-4">
-            Let's <span className="text-gradient">Connect</span>
-          </h2>
-          <p className="text-slate-400 max-w-2xl mx-auto">
-            Ready to transform your business? Reach out and let's build something extraordinary together.
-          </p>
-        </motion.div>
-
-        <div className="grid lg:grid-cols-2 gap-12 items-start">
+    <section id="contact" className="relative py-28 bg-cream overflow-hidden">
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="grid lg:grid-cols-2 gap-16 items-start">
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.7 }}
           >
-            <div className="relative h-[300px] rounded-3xl overflow-hidden glass glow-blue mb-8">
-              <SectionCanvas cameraPosition={[0, 0, 5.5]}>
+            <p className="section-label mb-3">Contact</p>
+            <h2 className="heading-lg text-black mb-4">
+              We&apos;ll reply in <span className="text-accent">24 hrs</span>
+            </h2>
+            <p className="text-muted leading-relaxed mb-8 max-w-md">
+              Limited slots left for new projects. Tell us what you need and
+              let&apos;s build something extraordinary together.
+            </p>
+
+            <div className="relative h-[260px] rounded-[2rem] overflow-hidden bg-white border border-black/5 mb-8 orange-glow">
+              <SectionCanvas cameraPosition={[0, 0, 4]}>
                 <ContactScene3D />
               </SectionCanvas>
-              <div className="absolute top-4 left-4 glass rounded-lg px-3 py-1.5 pointer-events-none">
-                <p className="text-xs text-cyan-400 font-medium">Send a Message</p>
-              </div>
             </div>
 
-            <div className="space-y-4">
+            <div className="space-y-3">
               {contactInfo.map((info) => (
-                <motion.div
+                <div
                   key={info.label}
-                  whileHover={{ x: 4 }}
-                  className="glass rounded-xl p-4 flex items-center gap-4 hover:bg-white/5 transition-colors cursor-default"
+                  className="flex items-center gap-4 p-4 rounded-2xl bg-white border border-black/5 hover:border-orange/30 transition-colors"
                 >
-                  <div className="w-10 h-10 rounded-lg bg-cyan-500/20 flex items-center justify-center">
-                    <info.icon size={18} className="text-cyan-400" />
+                  <div className="w-10 h-10 rounded-full bg-orange/10 flex items-center justify-center">
+                    <info.icon size={18} className="text-orange" />
                   </div>
                   <div>
-                    <p className="text-xs text-slate-500">{info.label}</p>
-                    <p className="text-sm font-medium text-white">{info.value}</p>
+                    <p className="text-xs text-muted">{info.label}</p>
+                    <p className="text-sm font-semibold text-black">{info.value}</p>
                   </div>
-                </motion.div>
+                </div>
               ))}
             </div>
           </motion.div>
 
-          <motion.form
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.7 }}
-            onSubmit={handleSubmit}
-            className="glass-strong rounded-3xl p-8 space-y-5"
+            transition={{ delay: 0.15 }}
           >
-            <div>
-              <label htmlFor="name" className="block text-sm font-medium text-slate-300 mb-2">Full Name</label>
-              <input
-                id="name"
-                type="text"
-                required
-                value={formData.name}
-                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400/50 focus:ring-1 focus:ring-cyan-400/25 transition-all"
-                placeholder="John Doe"
-              />
+            <div className="bg-white rounded-[2rem] border border-black/5 p-8 shadow-sm">
+              <h3 className="font-[family-name:var(--font-display)] text-xl font-bold text-black mb-6">
+                What do you need help with?
+              </h3>
+
+              <div className="grid grid-cols-2 gap-3 mb-8">
+                {helpOptions.map((option, i) => (
+                  <button
+                    key={option}
+                    type="button"
+                    onClick={() => setSelectedHelp(i)}
+                    className={`text-left text-sm p-4 rounded-xl border transition-all ${
+                      selectedHelp === i
+                        ? 'border-orange bg-orange/5 text-black font-medium'
+                        : 'border-black/8 text-muted hover:border-black/15'
+                    }`}
+                  >
+                    {option}
+                  </button>
+                ))}
+              </div>
+
+              <form onSubmit={handleSubmit} className="space-y-4">
+                <div>
+                  <label htmlFor="name" className="block text-sm font-medium text-charcoal mb-1.5">
+                    Full Name
+                  </label>
+                  <input
+                    id="name"
+                    type="text"
+                    required
+                    value={formData.name}
+                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                    className="w-full px-4 py-3 rounded-xl bg-cream border border-black/8 text-black placeholder-muted focus:outline-none focus:border-orange focus:ring-2 focus:ring-orange/15 transition-all"
+                    placeholder="John Doe"
+                  />
+                </div>
+                <div>
+                  <label htmlFor="email" className="block text-sm font-medium text-charcoal mb-1.5">
+                    Email Address
+                  </label>
+                  <input
+                    id="email"
+                    type="email"
+                    required
+                    value={formData.email}
+                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                    className="w-full px-4 py-3 rounded-xl bg-cream border border-black/8 text-black placeholder-muted focus:outline-none focus:border-orange focus:ring-2 focus:ring-orange/15 transition-all"
+                    placeholder="john@company.com"
+                  />
+                </div>
+                <div>
+                  <label htmlFor="message" className="block text-sm font-medium text-charcoal mb-1.5">
+                    Message
+                  </label>
+                  <textarea
+                    id="message"
+                    required
+                    rows={4}
+                    value={formData.message}
+                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                    className="w-full px-4 py-3 rounded-xl bg-cream border border-black/8 text-black placeholder-muted focus:outline-none focus:border-orange focus:ring-2 focus:ring-orange/15 transition-all resize-none"
+                    placeholder="Tell us about your project..."
+                  />
+                </div>
+                <button
+                  type="submit"
+                  disabled={submitted}
+                  className="btn-primary w-full justify-center disabled:opacity-70"
+                >
+                  {submitted ? (
+                    <>
+                      <CheckCircle size={18} />
+                      Message Sent!
+                    </>
+                  ) : (
+                    <>
+                      Send Message
+                      <ArrowRight size={18} />
+                    </>
+                  )}
+                </button>
+              </form>
             </div>
-            <div>
-              <label htmlFor="email" className="block text-sm font-medium text-slate-300 mb-2">Email Address</label>
-              <input
-                id="email"
-                type="email"
-                required
-                value={formData.email}
-                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400/50 focus:ring-1 focus:ring-cyan-400/25 transition-all"
-                placeholder="john@company.com"
-              />
-            </div>
-            <div>
-              <label htmlFor="message" className="block text-sm font-medium text-slate-300 mb-2">Message</label>
-              <textarea
-                id="message"
-                required
-                rows={5}
-                value={formData.message}
-                onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400/50 focus:ring-1 focus:ring-cyan-400/25 transition-all resize-none"
-                placeholder="Tell us about your project..."
-              />
-            </div>
-            <button
-              type="submit"
-              disabled={submitted}
-              className="w-full flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-gradient-to-r from-blue-500 to-cyan-400 text-white font-semibold hover:shadow-xl hover:shadow-cyan-500/20 transition-all duration-300 hover:scale-[1.02] disabled:opacity-70"
-            >
-              {submitted ? (
-                <>
-                  <CheckCircle size={18} />
-                  Message Sent!
-                </>
-              ) : (
-                <>
-                  <Send size={18} />
-                  Send Message
-                </>
-              )}
-            </button>
-          </motion.form>
+          </motion.div>
         </div>
       </div>
     </section>
