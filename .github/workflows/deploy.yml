@@ -2,7 +2,7 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: [main, cursor/famztech-website-9238]
+    branches: [main]
   workflow_dispatch:
 
 permissions:
@@ -23,6 +23,7 @@ jobs:
         with:
           node-version: 22
           cache: npm
+      - uses: actions/configure-pages@v5
       - run: npm ci
       - run: npm run build
         env:
