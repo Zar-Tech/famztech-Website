@@ -889,12 +889,7 @@ body {
 .hardware-section {
   position: relative;
   padding-block: 0 4rem;
-  background: linear-gradient(
-    180deg,
-    var(--color-cream) 0%,
-    #ffffff 42%,
-    #fff6f1 100%
-  );
+  background: #ffffff;
   overflow: hidden;
   display: flex;
   justify-content: center;
@@ -919,17 +914,6 @@ body {
   width: 100%;
   display: flex;
   justify-content: center;
-}
-
-.hardware-section::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 6rem;
-  background: linear-gradient(to bottom, transparent, rgba(10, 10, 10, 0.06));
-  pointer-events: none;
 }
 
 .hw-viz {
@@ -965,11 +949,10 @@ body {
   inset: 0;
   background: linear-gradient(
     145deg,
-    rgba(255, 87, 34, 0.1) 0%,
-    rgba(255, 152, 0, 0.06) 45%,
-    rgba(255, 255, 255, 0.04) 100%
+    rgba(255, 87, 34, 0.04) 0%,
+    rgba(255, 255, 255, 0.08) 100%
   );
-  mix-blend-mode: multiply;
+  mix-blend-mode: soft-light;
   pointer-events: none;
 }
 
