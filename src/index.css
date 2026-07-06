@@ -888,7 +888,7 @@ body {
 
 .hardware-section {
   position: relative;
-  padding-block: 0;
+  padding-block: 0 4rem;
   background: linear-gradient(
     180deg,
     var(--color-cream) 0%,
@@ -898,6 +898,12 @@ body {
   overflow: hidden;
   display: flex;
   justify-content: center;
+}
+
+@media (min-width: 1024px) {
+  .hardware-section {
+    padding-bottom: 5rem;
+  }
 }
 
 .hardware-section-inner {
