@@ -888,8 +888,8 @@ body {
 
 .hardware-section {
   position: relative;
-  padding-block: 0 4rem;
-  background: #ffffff;
+  padding-block: 3rem 4rem;
+  background: var(--color-cream);
   overflow: hidden;
   display: flex;
   justify-content: center;
@@ -897,7 +897,7 @@ body {
 
 @media (min-width: 1024px) {
   .hardware-section {
-    padding-bottom: 5rem;
+    padding-block: 4rem 5rem;
   }
 }
 
@@ -930,6 +930,9 @@ body {
   isolation: isolate;
   width: 100%;
   margin-inline: auto;
+  background: var(--color-cream);
+  border-radius: 1rem;
+  overflow: hidden;
 }
 
 .hw-viz-video {
@@ -940,20 +943,31 @@ body {
   margin-inline: auto;
   object-fit: contain;
   object-position: center center;
-  background: transparent;
-  filter: hue-rotate(168deg) saturate(1.18) brightness(1.05) contrast(1.03);
+  background: var(--color-cream);
+  filter: hue-rotate(168deg) saturate(1.12) brightness(1.14) contrast(0.96);
 }
 
 .hw-viz-tint {
   position: absolute;
   inset: 0;
   background: linear-gradient(
-    145deg,
-    rgba(255, 87, 34, 0.04) 0%,
-    rgba(255, 255, 255, 0.08) 100%
+    180deg,
+    var(--color-cream) 0%,
+    rgba(250, 249, 247, 0.35) 18%,
+    rgba(250, 249, 247, 0.35) 82%,
+    var(--color-cream) 100%
   );
-  mix-blend-mode: soft-light;
   pointer-events: none;
+  z-index: 2;
+}
+
+.hw-viz-frame::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  box-shadow: inset 0 0 72px 48px var(--color-cream);
+  pointer-events: none;
+  z-index: 3;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -966,12 +980,16 @@ body {
   }
 
   .hw-viz-frame::after {
+    display: none;
+  }
+
+  .hw-viz-frame::before {
     content: '';
     display: block;
     width: 100%;
     aspect-ratio: 16 / 9;
-    background: url('/media/tech-hardware-viz-poster.png') center / contain no-repeat;
-    filter: hue-rotate(168deg) saturate(1.18) brightness(1.05) contrast(1.03);
+    background: var(--color-cream) url('/media/tech-hardware-viz-poster.png') center / contain no-repeat;
+    filter: hue-rotate(168deg) saturate(1.12) brightness(1.14) contrast(0.96);
   }
 }
 
