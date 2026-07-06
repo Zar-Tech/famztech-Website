@@ -7,13 +7,13 @@ export default defineConfig({
   plugins: [react(), tailwindcss()],
   server: {
     host: true,
-    port: 5190,
+    port: 5195,
     strictPort: true,
     allowedHosts: true,
   },
   preview: {
     host: true,
-    port: 5190,
+    port: 5195,
     strictPort: true,
     allowedHosts: true,
   },
