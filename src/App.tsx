@@ -15,8 +15,8 @@ export default function App() {
         <HomeSection />
         <ProductsSection />
         <AppDevelopmentSection />
-        <ServicesSection />
         <HardwareSection />
+        <ServicesSection />
         <ContactSection />
       </main>
       <Footer />
