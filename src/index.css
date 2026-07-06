@@ -1253,23 +1253,28 @@ body {
 .navbar-brand {
   display: flex;
   align-items: center;
-  gap: 0.625rem;
   flex-shrink: 0;
   text-decoration: none;
 }
 
-.navbar-logo {
-  width: 2rem;
-  height: 2rem;
-  border-radius: 9999px;
-  background: var(--color-orange);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.75rem;
-  font-weight: 600;
-  color: #fff;
-  flex-shrink: 0;
+.site-logo {
+  display: block;
+  width: auto;
+  object-fit: contain;
+}
+
+.site-logo--nav {
+  height: 2.25rem;
+}
+
+.site-logo--footer {
+  height: 2.75rem;
+}
+
+@media (min-width: 1024px) {
+  .site-logo--nav {
+    height: 2.5rem;
+  }
 }
 
 .navbar-cta {
@@ -1895,22 +1900,8 @@ section[id] {
 .footer-logo {
   display: inline-flex;
   align-items: center;
-  gap: 0.625rem;
   text-decoration: none;
   margin-bottom: 1rem;
-}
-
-.footer-logo-icon {
-  width: 2rem;
-  height: 2rem;
-  border-radius: 9999px;
-  background: var(--color-orange);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.75rem;
-  font-weight: 600;
-  color: #fff;
 }
 
 .footer-tagline {

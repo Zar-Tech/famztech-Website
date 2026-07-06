@@ -1,4 +1,5 @@
 import { ArrowRight, Mail, MapPin } from 'lucide-react'
+import Logo from './Logo'
 
 const exploreLinks = [
   { label: 'Home', href: '#home' },
@@ -20,10 +21,7 @@ export default function Footer() {
       <div className="section-wrap footer-main">
         <div className="footer-brand">
           <a href="#home" className="footer-logo">
-            <span className="footer-logo-icon">F</span>
-            <span className="brand-logo brand-logo-footer">
-              Famz<span className="text-accent">tech</span>
-            </span>
+            <Logo variant="footer" />
           </a>
           <p className="footer-tagline">
             Premium technology for teams that build at scale.

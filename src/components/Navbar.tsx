@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Menu, X } from 'lucide-react'
+import Logo from './Logo'
 
 const navLinks = [
   { label: 'Home', href: '#home' },
@@ -40,10 +41,7 @@ export default function Navbar() {
             onClick={(e) => { e.preventDefault(); handleNavClick('#home') }}
             className="navbar-brand"
           >
-            <div className="navbar-logo">F</div>
-            <span className="brand-logo">
-              Famz<span className="text-accent">tech</span>
-            </span>
+            <Logo variant="nav" />
           </a>
 
           <div className="hidden lg:flex items-center gap-7">
