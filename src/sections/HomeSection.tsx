@@ -4,7 +4,7 @@ import AnimatedCodeEditor from '../components/AnimatedCodeEditor'
 
 export default function HomeSection() {
   return (
-    <section id="home" className="relative bg-white pt-28 pb-16 lg:pt-36 lg:pb-24">
+    <section id="home" className="relative bg-white py-16 lg:py-24">
       <div className="section-wrap">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           <FadeIn>

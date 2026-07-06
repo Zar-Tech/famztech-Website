@@ -23,6 +23,7 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
   font-size: 16px;
 }
 
@@ -557,4 +558,118 @@ body {
   font-weight: 500;
   color: var(--color-dark);
   letter-spacing: 0.01em;
+  white-space: nowrap;
+}
+
+/* ── Navbar ── */
+
+.navbar {
+  height: var(--nav-height);
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.navbar-scrolled {
+  border-bottom-color: var(--color-border);
+  box-shadow: 0 1px 12px rgba(0, 0, 0, 0.04);
+}
+
+.navbar-inner {
+  max-width: 72rem;
+  margin-inline: auto;
+  padding-inline: 1.5rem;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  flex-shrink: 0;
+  text-decoration: none;
+}
+
+.navbar-logo {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 9999px;
+  background: var(--color-orange);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #fff;
+  flex-shrink: 0;
+}
+
+.navbar-cta {
+  padding: 0.625rem 1.25rem !important;
+  font-size: 0.8125rem !important;
+  white-space: nowrap;
+}
+
+.navbar-menu-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem;
+  color: var(--color-black);
+  flex-shrink: 0;
+}
+
+.navbar-backdrop {
+  position: fixed;
+  inset: 0;
+  top: var(--nav-height);
+  background: rgba(0, 0, 0, 0.2);
+  z-index: 40;
+}
+
+.navbar-mobile {
+  position: fixed;
+  top: var(--nav-height);
+  left: 0;
+  right: 0;
+  z-index: 45;
+  background: #fff;
+  border-bottom: 1px solid var(--color-border);
+  padding: 1rem 1.5rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+.navbar-mobile-link {
+  display: block;
+  padding: 0.75rem 0;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: var(--color-charcoal);
+  text-decoration: none;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.navbar-mobile-link:last-of-type {
+  border-bottom: none;
+  margin-bottom: 0.5rem;
+}
+
+:root {
+  --nav-height: 4rem;
+}
+
+.main-content {
+  padding-top: var(--nav-height);
+}
+
+section[id] {
+  scroll-margin-top: var(--nav-height);
 }
